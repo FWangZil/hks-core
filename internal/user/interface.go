@@ -1,6 +1,10 @@
 package user
 
-import "hks/hks-core/pkg"
+import (
+	"hks/hks-core/pkg"
+
+	"github.com/shopspring/decimal"
+)
 
 type repoI interface {
 	// GetUserByQuery 获取用户详情
@@ -15,4 +19,6 @@ type repoI interface {
 	GetLocation()
 	// ListLocations 列出用户实时地址
 	ListLocations()
+
+	GetUserStatus(longitude, latitude decimal.Decimal) (bool, error)
 }

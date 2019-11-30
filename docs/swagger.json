@@ -264,7 +264,7 @@
         },
         "password": {
           "type": "string",
-          "description": "用户登录密码"
+          "description": "用户登录密码 密码不能小于六位"
         },
         "idCard": {
           "type": "string",
@@ -272,11 +272,11 @@
         },
         "gender": {
           "type": "integer",
-          "description": "性别"
+          "description": "性别 1-男 2-女"
         },
         "type": {
           "type": "integer",
-          "description": "用户类型"
+          "description": "用户类型 1-用户 2-热心群众，其他安保人员 3-警察"
         },
         "address": {
           "type": "string",

@@ -7,6 +7,8 @@ import (
 	"hks/hks-core/util"
 	"log"
 
+	"github.com/shopspring/decimal"
+
 	"github.com/gin-gonic/gin"
 	"github.com/meikeland/errkit"
 )
@@ -72,6 +74,10 @@ func registerUser(c *gin.Context) {
 		fail(c, errkit.New("参数错误"))
 		return
 	}
+	if len(param.Password) < 6 {
+		fail(c, fmt.Errorf("密码不能小于六位"))
+		return
+	}
 	if len(param.Mobile) > 0 {
 		if err := util.ValiateMobileNumber(param.Mobile); err != nil {
 			fail(c, fmt.Errorf("手机号码格式错误"))
@@ -85,6 +91,29 @@ func registerUser(c *gin.Context) {
 		}
 	}
 	userInfo, err := user.Repo.UserRegister(&param)
+	if err != nil {
+		fail(c, err)
+		return
+	}
+	ok(c, resp{
+		"user": userInfo,
+	})
+}
+
+// getUserStatus 通过ID获取用户信息
+func getUserStatus(c *gin.Context) {
+	param := struct {
+		UserID    uint            `json:"userID" form:"userID"`
+		Longitude decimal.Decimal `json:"longitude" form:"longitude"` // 经度
+		Latitude  decimal.Decimal `json:"latitude" form:"latitude"`   // 维度
+		Mobile    string          `json:"mobile" form:"mobile"`
+	}{}
+	if err := c.ShouldBindQuery(&param); err != nil {
+		log.Println(fmt.Errorf("参数错误:%w", err))
+		fail(c, errkit.New("参数错误"))
+		return
+	}
+	userInfo, err := user.Repo.GetUserStatus(param.Longitude, param.Latitude)
 	if err != nil {
 		fail(c, err)
 		return

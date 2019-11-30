@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"hks/hks-core/pkg"
 
+	"github.com/shopspring/decimal"
+
 	"github.com/meikeland/errkit"
 
 	"github.com/jinzhu/gorm"
@@ -51,6 +53,11 @@ func (repo sqlRepo) GetLocation() {
 // ListLocations 列出用户实时地址
 func (repo sqlRepo) ListLocations() {
 
+}
+
+func (repo sqlRepo) GetUserStatus(longitude, latitude decimal.Decimal) (bool, error) {
+
+	return false, nil
 }
 
 // count 获取用户记录数量
