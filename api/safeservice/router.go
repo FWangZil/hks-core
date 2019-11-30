@@ -10,6 +10,9 @@ import (
 // initRouter 初始化全部路由
 func initRouter(router *gin.Engine) {
 	// 总的文档首页在docs
+
+	router.Use(Cors())
+
 	router.Static("/api/docs", "./docs")
 
 	// 运营平台以session作为登录凭证
