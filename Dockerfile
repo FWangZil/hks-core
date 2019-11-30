@@ -1,7 +1,7 @@
 FROM golang:stretch as golang-builder
 WORKDIR /go/src/hks/hks-core
 COPY . .
-COPY cmd/card/main.go ./main.go
+COPY cmd/safeserver/main.go ./main.go
 #RUN go get -d -v
 RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
 
