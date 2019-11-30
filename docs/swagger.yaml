@@ -4,10 +4,10 @@ info:
   title: 出行安全卫士接口文档
 schemes:
   - http
-basePath: /api
+basePath: /
 paths:
 
-  /login:
+  /api/login:
     post:
       summary: 登录
       operationId: login
@@ -33,7 +33,7 @@ paths:
               password:
                 type: string
                 description: 密码
-  /logout:
+  /api/logout:
     post:
       summary: 退出
       operationId: logout
@@ -46,7 +46,7 @@ paths:
           description: 成功
           schema:
             type: object
-  /currentUser:
+  /api/currentUser:
     get:
       summary: 获取当前用户
       operationId: currentUser
@@ -61,7 +61,7 @@ paths:
             type: object
 
 
-  /user/get:
+  /api/user/get:
     get:
       summary: 获取单个用户信息
       operationId: getUserByQuery
@@ -89,7 +89,7 @@ paths:
           description: 用户手机号码
           type: string
 
-  /user/list:
+  /api/user/list:
     get:
       summary: 获取用户列表信息
       operationId: listUser
@@ -124,7 +124,7 @@ paths:
           in: query
           description: 页码
           type: integer
-  /user/register:
+  /api/user/register:
     post:
       summary: 用户注册接口
       operationId: registerUser
@@ -144,7 +144,7 @@ paths:
           schema:
             $ref: "#/definitions/UserCreateParam"
 
-  /user/add/relationship:
+  /api/user/add/relationship:
     put:
       summary: 添加用户亲友
       operationId: addRelationship
@@ -165,7 +165,7 @@ paths:
             $ref: "#/definitions/addRelationshipParam"
 
 
-  /user/location/get:
+  /api/user/location/get:
     get:
       summary: 获取用户当前实时地址
       operationId: getLocation
@@ -189,7 +189,7 @@ paths:
           description: 用户ID
           type: integer
 
-  /user/location/list:
+  /api/user/location/list:
     get:
       summary: 获取用户当前实时地址
       operationId: listUserLocations
@@ -213,7 +213,7 @@ paths:
           description: 用户ID
           type: integer
 
-  /user/get/relationship:
+  /api/user/get/relationship:
     get:
       summary: 获取用户当前实时地址
       operationId: getRelationship
@@ -237,7 +237,7 @@ paths:
           description: 用户ID
           type: integer
 
-  /user/location/set:
+  /api/user/location/set:
     put:
       summary: 更新用户实时地址
       operationId: setUserLocation
@@ -258,7 +258,7 @@ paths:
             $ref: "#/definitions/setUserLocationParam"
 
 
-  /event/get:
+  /api/event/get:
     get:
       summary: 获取单个事件信息
       operationId: getEventByID
@@ -282,7 +282,7 @@ paths:
           description: 事件ID
           type: integer
 
-  /event/list:
+  /api/event/list:
     get:
       summary: 获取事件列表信息
       operationId: listEvent
@@ -334,7 +334,7 @@ paths:
           description: 页码
           type: integer
 
-  /event/register:
+  /api/event/register:
     post:
       summary: 事件注册接口
       operationId: registerEvent
@@ -355,7 +355,7 @@ paths:
             $ref: "#/definitions/EventCreateParam"
 
 
-  /event/update:
+  /api/event/update:
     post:
       summary: 事件更新接口
       operationId: updateEvent

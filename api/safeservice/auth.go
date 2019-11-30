@@ -90,6 +90,8 @@ func login(c *gin.Context) {
 		fail(c, errkit.Wrap(err, "登录失败，请输入账号和密码"))
 		return
 	}
+	log.Println("param accout",param.Account)
+	log.Println("param password",param.Password)
 	userInfo, err := opauth.ACL.Login(param.Account, param.Password)
 	if err != nil {
 		fail(c, errkit.New("登录失败，请检查账号和密码是否正确"))

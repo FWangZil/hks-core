@@ -3,8 +3,8 @@ package opauth
 import (
 	"hks/hks-core/pkg"
 
-	"github.com/jinzhu/gorm"
 	"github.com/FWangZil/errkit"
+	"github.com/jinzhu/gorm"
 )
 
 type sqlRepo struct {
@@ -14,7 +14,7 @@ type sqlRepo struct {
 // Login 登录
 func (repo sqlRepo) Login(account, password string) (*pkg.User, error) {
 	query := query{
-		Account: account,
+		Mobile: account,
 	}
 	user := &pkg.User{}
 	if err := repo.db.Scopes(query.where()).First(user).Error; err != nil {
