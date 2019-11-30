@@ -46,7 +46,7 @@ func initNeedAuthRouter(r *gin.Engine) {
 		location.GET("/status", getUserStatus)
 		location.GET("/get", getLocation)
 		location.GET("/list", listUserLocations)
-		location.PUT("/set", setUserLocation)
+		location.POST("/set", setUserLocation)
 	}
 	event := r.Group("/api/event")
 	eventGroup := event.Group("/")
@@ -54,6 +54,6 @@ func initNeedAuthRouter(r *gin.Engine) {
 		eventGroup.GET("/get", getEventByID)
 		eventGroup.GET("/list", listEvent)
 		eventGroup.POST("/register", registerEvent)
-		eventGroup.PUT("/update", updateEvent)
+		eventGroup.POST("/update", updateEvent)
 	}
 }

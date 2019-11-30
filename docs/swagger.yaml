@@ -282,7 +282,7 @@ paths:
           type: integer
 
   /api/user/location/set:
-    put:
+    post:
       summary: 更新用户实时地址
       operationId: setUserLocation
       produces:
@@ -444,7 +444,7 @@ paths:
 
 
   /api/event/update:
-    put:
+    post:
       summary: 事件更新接口
       operationId: updateEvent
       produces:
