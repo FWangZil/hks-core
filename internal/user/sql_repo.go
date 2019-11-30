@@ -13,10 +13,10 @@ type sqlRepo struct {
 	db *gorm.DB
 }
 
-// GetUserByID 获取用户详情
-func (repo sqlRepo) GetUserByID(userID uint) (*pkg.User, error) {
+// GetUserByQuery 获取用户详情
+func (repo sqlRepo) GetUserByQuery(query Query) (*pkg.User, error) {
 	user := &pkg.User{}
-	if err := repo.db.Model(user).Where("id = ?", userID).First(user).Error; err != nil {
+	if err := repo.db.Model(user).Scopes(query.where()).First(user).Error; err != nil {
 		return nil, fmt.Errorf("获取用户信息发生错误：%w", err)
 	}
 	return user, nil

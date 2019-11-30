@@ -1,4 +1,4 @@
-package safeserver
+package main
 
 import "hks/hks-core/api/safeservice"
 

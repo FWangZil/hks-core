@@ -2,17 +2,13 @@ package util
 
 import (
 	"crypto/md5"
-	"crypto/sha1"
 	"encoding/binary"
 	"encoding/hex"
-	"log"
 	"regexp"
-	"sort"
 	"strconv"
 	"strings"
 	"time"
 
-	"code.aliyun.com/yjqu/apigate-card/internal/conf"
 	"github.com/pkg/errors"
 
 	"golang.org/x/crypto/bcrypt"
@@ -174,24 +170,4 @@ func ValiatePassword(password string) error {
 		return nil
 	}
 	return errors.Wrap(errors.New("无效的密码"), "无效的密码，请使用6-16位字母和数字")
-}
-
-// sh1 加密方法
-func SH1signature(apiTicket string) (string, string, string) {
-	timestamp := strconv.FormatInt(time.Now().Unix(), 10)
-	cardID := conf.GetCardID()
-	source := []string{}
-	source = append(source, timestamp)
-	source = append(source, apiTicket)
-	source = append(source, cardID)
-	sort.Strings(source)
-	var sortSource string
-	for k := range source {
-		sortSource = sortSource + source[k]
-	}
-	shaNew := sha1.New()
-	shaNew.Write([]byte(sortSource))
-	shaValue := hex.EncodeToString(shaNew.Sum([]byte("")))
-	log.Println(shaValue)
-	return cardID, timestamp, shaValue
 }

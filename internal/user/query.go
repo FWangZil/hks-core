@@ -9,6 +9,7 @@ type Query struct {
 	Limit  uint
 	Offset uint
 	UserID uint // 用户自增ID
+	Mobile string
 	Gender uint // 性别
 	Type   uint // 用户类型
 }
@@ -24,6 +25,9 @@ func (c Query) where() func(db *gorm.DB) *gorm.DB {
 		}
 		if c.Type > 0 {
 			db = db.Where("type = ?", c.Type)
+		}
+		if len(c.Mobile) > 0 {
+			db = db.Where("mobile = ?", c.Mobile)
 		}
 		return db
 	}

@@ -1,6 +1,6 @@
 database:
   dialect: mysql
-  dsn: root:"password"@tcp("ip":3306)/apigate-card?charset=utf8mb4&parseTime=true&loc=PRC
+  dsn: root:"password"@tcp("ip":3306)/"database name?charset=utf8mb4&parseTime=true&loc=PRC
   debug: true
 
 gin:

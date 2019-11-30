@@ -11,14 +11,19 @@ import (
 	"github.com/meikeland/errkit"
 )
 
-// getUserByID 通过ID获取用户信息
-func getUserByID(c *gin.Context) {
+// getUserByQuery 通过ID获取用户信息
+func getUserByQuery(c *gin.Context) {
 	userID, err := util.ParseUint(c.Query("userID"))
+	mobile := c.Query("mobile")
 	if err != nil {
 		fail(c, err)
 		return
 	}
-	userInfo, err := user.Repo.GetUserByID(userID)
+	query := user.Query{
+		UserID: userID,
+		Mobile: mobile,
+	}
+	userInfo, err := user.Repo.GetUserByQuery(query)
 	if err != nil {
 		fail(c, err)
 		return
