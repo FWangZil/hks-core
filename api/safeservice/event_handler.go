@@ -38,6 +38,8 @@ func listEvent(c *gin.Context) {
 		Type      uint   `json:"type" form:"type"`           // 事件类型
 		StartTime string `json:"startTime" form:"startTime"` // 筛选开始事件
 		EndTime   string `json:"endTime" form:"endTime"`     // 筛选结束事件
+		FixerID   uint   `json:"fixerID" form:"fixerID"`
+		HelperID  uint   `json:"helperID" form:"helperID"`
 	}{}
 	if err := c.ShouldBindQuery(&param); err != nil {
 		log.Println(fmt.Errorf("参数错误:%w", err))
@@ -54,6 +56,8 @@ func listEvent(c *gin.Context) {
 		UserID:    param.UserID,
 		StartTime: startTime,
 		EndTime:   endTime,
+		FixerID:   param.FixerID,
+		HelperID:  param.HelperID,
 	}
 	events, count, err := event.Repo.ListEvent(query)
 	if err != nil {

@@ -171,3 +171,12 @@ func ValiatePassword(password string) error {
 	}
 	return errors.Wrap(errors.New("无效的密码"), "无效的密码，请使用6-16位字母和数字")
 }
+
+// CheckIDCard 验证身份证号是否合法
+func CheckIDCard(idCard string) error {
+	res, _ := regexp.Match("^[1-9]\\d{7}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}$|^[1-9]\\d{5}[1-9]\\d{3}((0\\d)|(1[0-2]))(([0|1|2]\\d)|3[0-1])\\d{3}([0-9]|X)$", []byte(idCard))
+	if res {
+		return nil
+	}
+	return errkit.Wrap(errkit.New("无效的身份证号"), "无效的身份证号")
+}

@@ -2,6 +2,7 @@ package sql
 
 import (
 	"hks/hks-core/internal/conf"
+	"hks/hks-core/pkg"
 	"log"
 
 	"github.com/jinzhu/gorm"
@@ -27,6 +28,9 @@ func Init() {
 		Db = Db.Debug()
 	}
 	Db.AutoMigrate(
+		&pkg.User{},
+		&pkg.UserLocation{},
+		&pkg.Event{},
 	)
 	log.Print("All table AutoMigrate finish.")
 }

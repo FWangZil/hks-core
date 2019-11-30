@@ -118,6 +118,136 @@
           }
         ]
       }
+    },
+    "/event/get": {
+      "get": {
+        "summary": "获取单个事件信息",
+        "operationId": "getEventByID",
+        "produces": ["application/json"],
+        "tags": ["event"],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "token",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "eventID",
+            "in": "query",
+            "description": "事件ID",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    "/event/list": {
+      "get": {
+        "summary": "获取事件列表信息",
+        "operationId": "listEvent",
+        "produces": ["application/json"],
+        "tags": ["event"],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "token",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "eventID",
+            "in": "query",
+            "description": "事件ID",
+            "type": "integer"
+          },
+          {
+            "name": "userID",
+            "in": "query",
+            "description": "报警人",
+            "type": "integer"
+          },
+          {
+            "name": "fixerID",
+            "in": "query",
+            "description": "处理人ID 警察",
+            "type": "integer"
+          },
+          {
+            "name": "HelperID",
+            "in": "query",
+            "description": "帮助人ID 保安 热心群众",
+            "type": "integer"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "事件状态",
+            "type": "integer"
+          },
+          {
+            "name": "level",
+            "in": "query",
+            "description": "事件等级",
+            "type": "integer"
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "页数",
+            "type": "integer"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "页码",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    "/event/register": {
+      "post": {
+        "summary": "事件注册借口",
+        "operationId": "registerEvent",
+        "produces": ["application/json"],
+        "tags": ["event"],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "请求参数",
+            "schema": {
+              "$ref": "#/definitions/EventCreateParam"
+            }
+          }
+        ]
+      }
     }
   },
   "definitions": {
@@ -162,6 +292,51 @@
         },
         "photo": {
           "type": "string",
+          "description": "照片"
+        }
+      }
+    },
+    "EventCreateParam": {
+      "type": "object",
+      "properties": {
+        "time": {
+          "type": "string",
+          "description": "事件姓名"
+        },
+        "level": {
+          "type": "integer",
+          "description": "手机号码"
+        },
+        "address": {
+          "type": "string",
+          "description": "事件登录密码"
+        },
+        "longitude": {
+          "type": "number",
+          "description": "身份证号码 警员标志码"
+        },
+        "latitude": {
+          "type": "number",
+          "description": "性别"
+        },
+        "status": {
+          "type": "integer",
+          "description": "事件类型"
+        },
+        "file": {
+          "type": "string",
+          "description": "警察的话是警局 保安是负责街区 事件是常用活动范围"
+        },
+        "userID": {
+          "type": "integer",
+          "description": "经度"
+        },
+        "fixerID": {
+          "type": "integer",
+          "description": "维度"
+        },
+        "helperID": {
+          "type": "integer",
           "description": "照片"
         }
       }

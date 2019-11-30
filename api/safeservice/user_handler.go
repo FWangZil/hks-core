@@ -72,6 +72,18 @@ func registerUser(c *gin.Context) {
 		fail(c, errkit.New("参数错误"))
 		return
 	}
+	if len(param.Mobile) > 0 {
+		if err := util.ValiateMobileNumber(param.Mobile); err != nil {
+			fail(c, fmt.Errorf("手机号码格式错误"))
+			return
+		}
+	}
+	if len(param.IDCard) > 0 {
+		if err := util.CheckIDCard(param.IDCard); err != nil {
+			fail(c, fmt.Errorf("身份号码格式错误"))
+			return
+		}
+	}
 	userInfo, err := user.Repo.UserRegister(&param)
 	if err != nil {
 		fail(c, err)

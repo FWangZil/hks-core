@@ -7,7 +7,7 @@ import (
 // initRouter 初始化全部路由
 func initRouter(router *gin.Engine) {
 	// 总的文档首页在docs
-	router.Static("/docs", "./docs")
+	router.Static("/api/docs", "./docs")
 	// initNoAuthRouter 不需要登录的接口
 	initNoAuthRouter(router)
 }
@@ -19,13 +19,13 @@ func initNoAuthRouter(r *gin.Engine) {
 	{
 		userGroup.GET("/get", getUserByQuery)
 		userGroup.GET("/list", listUser)
-		userGroup.GET("/register", registerUser)
+		userGroup.POST("/register", registerUser)
 	}
 	event := r.Group("/api/event")
 	eventGroup := event.Group("/")
 	{
 		eventGroup.GET("/get", getEventByID)
 		eventGroup.GET("/list", listEvent)
-		eventGroup.GET("/register", registerEvent)
+		eventGroup.POST("/register", registerEvent)
 	}
 }
