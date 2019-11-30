@@ -43,12 +43,21 @@ func (repo sqlRepo) UserRegister(user *pkg.User) (*pkg.User, error) {
 	return user, nil
 }
 
-// AddRelationship 用户注册方法
+// AddRelationship 增加用户亲友关系
 func (repo sqlRepo) AddRelationship(relation *pkg.Relative) (*pkg.Relative, error) {
 	if err := repo.db.Model(&pkg.Relative{}).Create(relation).Error; err != nil {
 		return nil, fmt.Errorf("注册用户信息发生错误：%w", err)
 	}
 	return relation, nil
+}
+
+// AddRelationship 获取用户亲友关系列表
+func (repo sqlRepo) GetUserRelationship(userID uint) ([]pkg.Relative, error) {
+	var relativeArr []pkg.Relative
+	if err := repo.db.Model(&pkg.Relative{}).Where("user_id", userID).Find(&relativeArr).Error; err != nil {
+		return nil, fmt.Errorf("注册用户信息发生错误：%w", err)
+	}
+	return relativeArr, nil
 }
 
 // count 获取用户记录数量

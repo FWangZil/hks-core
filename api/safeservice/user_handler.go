@@ -98,7 +98,7 @@ func registerUser(c *gin.Context) {
 	})
 }
 
-// addRelationship 用户注册接口
+// addRelationship 用户增加亲友关系接口
 func addRelationship(c *gin.Context) {
 	param := pkg.Relative{}
 	if err := c.ShouldBind(&param); err != nil {
@@ -119,5 +119,22 @@ func addRelationship(c *gin.Context) {
 	}
 	ok(c, resp{
 		"user": userInfo,
+	})
+}
+
+// getRelationship 获取用户亲友关系接口
+func getRelationship(c *gin.Context) {
+	userID, err := util.ParseUint(c.Query("userID"))
+	if userID < 0 {
+		fail(c, fmt.Errorf("请传入用户ID"))
+		return
+	}
+	relations, err := user.Repo.GetUserRelationship(userID)
+	if err != nil {
+		fail(c, err)
+		return
+	}
+	ok(c, resp{
+		"relations": relations,
 	})
 }

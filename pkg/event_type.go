@@ -14,7 +14,7 @@ type Event struct {
 	Address   string          `json:"address" gorm:"size:200"`       // 事情发生的地址
 	Longitude decimal.Decimal `json:"longitude" gorm:"type:decimal"` // 经度
 	Latitude  decimal.Decimal `json:"latitude" gorm:"type:decimal"`  // 维度
-	Status    string          `json:"status" gorm:"size:200"`        // 事件发展至今的状态
+	Status    uint            `json:"status" gorm:"size:200"`        // 事件发展至今的状态
 	File      string          `json:"file" gorm:"type:text"`         // 该事件的存档文件
 	UserID    uint            `json:"userID" gorm:"size:11"`         // 报警人ID
 	FixerID   uint            `json:"fixerID" gorm:"size:11"`        // 处理人ID 警察

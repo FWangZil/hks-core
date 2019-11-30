@@ -18,6 +18,7 @@ func initNoAuthRouter(r *gin.Engine) {
 	userGroup := user.Group("/")
 	{
 		userGroup.GET("/get", getUserByQuery)
+		userGroup.GET("/get/relationship", getRelationship)
 		userGroup.GET("/list", listUser)
 		userGroup.POST("/register", registerUser)
 		userGroup.PUT("/add/relationship", addRelationship)

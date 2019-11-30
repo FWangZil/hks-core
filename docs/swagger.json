@@ -119,6 +119,151 @@
         ]
       }
     },
+    "/user/add/relationship": {
+      "put": {
+        "summary": "添加用户亲友",
+        "operationId": "addRelationship",
+        "produces": ["application/json"],
+        "tags": ["user"],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "请求参数",
+            "schema": {
+              "$ref": "#/definitions/addRelationshipParam"
+            }
+          }
+        ]
+      }
+    },
+    "/user/location/get": {
+      "get": {
+        "summary": "获取用户当前实时地址",
+        "operationId": "getLocation",
+        "produces": ["application/json"],
+        "tags": ["userLocation"],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "token",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userID",
+            "in": "query",
+            "description": "用户ID",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    "/user/location/list": {
+      "get": {
+        "summary": "获取用户当前实时地址",
+        "operationId": "listUserLocations",
+        "produces": ["application/json"],
+        "tags": ["userLocation"],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "token",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userID",
+            "in": "query",
+            "description": "用户ID",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    "/user/get/relationship": {
+      "get": {
+        "summary": "获取用户当前实时地址",
+        "operationId": "getRelationship",
+        "produces": ["application/json"],
+        "tags": ["user"],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "token",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userID",
+            "in": "query",
+            "description": "用户ID",
+            "type": "integer"
+          }
+        ]
+      }
+    },
+    "/user/location/set": {
+      "put": {
+        "summary": "更新用户实时地址",
+        "operationId": "setUserLocation",
+        "produces": ["application/json"],
+        "tags": ["userLocation"],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "请求参数",
+            "schema": {
+              "$ref": "#/definitions/setUserLocationParam"
+            }
+          }
+        ]
+      }
+    },
     "/event/get": {
       "get": {
         "summary": "获取单个事件信息",
@@ -248,6 +393,32 @@
           }
         ]
       }
+    },
+    "/event/update": {
+      "post": {
+        "summary": "事件更新接口",
+        "operationId": "updateEvent",
+        "produces": ["application/json"],
+        "tags": ["event"],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "请求参数",
+            "schema": {
+              "$ref": "#/definitions/EventUpdateParam"
+            }
+          }
+        ]
+      }
     }
   },
   "definitions": {
@@ -296,7 +467,70 @@
         }
       }
     },
+    "addRelationshipParam": {
+      "type": "object",
+      "properties": {
+        "relationship": {
+          "type": "string",
+          "description": "用户亲友关系"
+        },
+        "mobile": {
+          "type": "string",
+          "description": "手机号码"
+        },
+        "userID": {
+          "type": "integer",
+          "description": "用户ID"
+        }
+      }
+    },
+    "setUserLocationParam": {
+      "type": "object",
+      "properties": {
+        "userID": {
+          "type": "integer",
+          "description": "用户ID"
+        },
+        "longitude": {
+          "type": "number",
+          "description": "身份证号码 警员标志码"
+        },
+        "latitude": {
+          "type": "number",
+          "description": "性别"
+        }
+      }
+    },
     "EventCreateParam": {
+      "type": "object",
+      "properties": {
+        "level": {
+          "type": "integer",
+          "description": "手机号码"
+        },
+        "address": {
+          "type": "string",
+          "description": "事件登录密码"
+        },
+        "longitude": {
+          "type": "number",
+          "description": "身份证号码 警员标志码"
+        },
+        "latitude": {
+          "type": "number",
+          "description": "性别"
+        },
+        "file": {
+          "type": "string",
+          "description": "警察的话是警局 保安是负责街区 事件是常用活动范围"
+        },
+        "userID": {
+          "type": "integer",
+          "description": "用户ID"
+        }
+      }
+    },
+    "EventUpdateParam": {
       "type": "object",
       "properties": {
         "time": {
@@ -329,15 +563,15 @@
         },
         "userID": {
           "type": "integer",
-          "description": "经度"
+          "description": "用户ID"
         },
         "fixerID": {
           "type": "integer",
-          "description": "维度"
+          "description": "警察ID"
         },
         "helperID": {
           "type": "integer",
-          "description": "照片"
+          "description": "热心群众/保安ID"
         }
       }
     }

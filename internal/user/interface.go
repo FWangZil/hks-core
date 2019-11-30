@@ -15,6 +15,8 @@ type repoI interface {
 	UserRegister(user *pkg.User) (*pkg.User, error)
 	// AddRelationship 增加亲友关系
 	AddRelationship(relation *pkg.Relative) (*pkg.Relative, error)
+	// AddRelationship 获取用户亲友关系列表
+	GetUserRelationship(userID uint) ([]pkg.Relative, error)
 
 	// About Locations
 	// GetLocation 获取用户实时地址

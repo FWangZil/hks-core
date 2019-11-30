@@ -3,6 +3,7 @@ package event
 import (
 	"fmt"
 	"hks/hks-core/pkg"
+	"time"
 
 	"github.com/meikeland/errkit"
 
@@ -37,6 +38,8 @@ func (repo sqlRepo) ListEvent(query Query) ([]pkg.Event, uint, error) {
 
 // EventRegister 事件注册方法
 func (repo sqlRepo) EventRegister(event *pkg.Event) (*pkg.Event, error) {
+	event.Status = pkg.StatusWaiting
+	event.Time = time.Now()
 	if err := repo.db.Model(&pkg.Event{}).Create(&event).Error; err != nil {
 		return nil, fmt.Errorf("注册事件信息发生错误：%w", err)
 	}
