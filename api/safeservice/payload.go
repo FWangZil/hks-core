@@ -35,6 +35,23 @@ func ok(c *gin.Context, resp resp) {
 	c.JSON(http.StatusOK, result)
 }
 
+func okArr(c *gin.Context, resp resp) {
+	result := make(map[string]interface{})
+	if resp != nil {
+		for key, value := range resp {
+			if fmt.Sprint(value) != "<nil>" {
+				data := make(map[string]interface{})
+				data[key] = value
+				result[key] = data
+			}
+		}
+	}
+	result["resultCode"] = respOk
+	result["resultMsg"] = "成功"
+
+	c.JSON(http.StatusOK, result)
+}
+
 // unLogin 未登录情况返回
 func unLogin(c *gin.Context) {
 	c.JSON(http.StatusOK, resp{

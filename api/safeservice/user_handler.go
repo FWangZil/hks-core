@@ -134,7 +134,7 @@ func getRelationship(c *gin.Context) {
 		fail(c, err)
 		return
 	}
-	ok(c, resp{
+	okArr(c, resp{
 		"data": relations,
 	})
 }

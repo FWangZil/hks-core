@@ -308,6 +308,28 @@ paths:
           description: 维度
           type: number
 
+  /api/user/location/status:
+    get:
+      summary: 通过ID获取用户信息
+      operationId: getUserStatus
+      produces:
+        - application/json
+      tags:
+        - userLocation
+      responses:
+        200:
+          description: 成功
+          schema:
+            type: object
+      parameters:
+        - name: longitude
+          in: query
+          description: 经度
+          type: number
+        - name: latitude
+          in: query
+          description: 维度
+          type: number
 
   /api/event/get:
     get:

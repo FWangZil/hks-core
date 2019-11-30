@@ -18,8 +18,9 @@ func getUserIDFromSession(c *gin.Context) uint {
 	session := sessions.Default(c)
 	t := session.Get("userID")
 	if t == nil {
-		unLogin(c)
-		c.Abort()
+		// unLogin(c)
+		// c.Abort()
+		return 0
 	}
 	return t.(uint)
 }
@@ -129,4 +130,3 @@ func logoutUser(c *gin.Context) {
 	}
 	ok(c, nil)
 }
-
