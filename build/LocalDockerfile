@@ -6,7 +6,7 @@ WORKDIR /root/
 COPY ./cmd/safeserver/safeserver ./app
 RUN chmod +x ./app
 COPY ./docs ./docs
-COPY ./template ./template
+# COPY ./template ./template
 
 EXPOSE 8080
 ENTRYPOINT ["./app"]

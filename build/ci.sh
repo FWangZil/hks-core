@@ -12,12 +12,12 @@ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build .
 cd ../../
 
 showMsg 'ci docker build'
-docker build . -t "docker images" -f ./build/LocalDockerfile
+docker build . -t registry.cn-chengdu.aliyuncs.com/wmicroservice/hks-core:b0.1 -f ./build/LocalDockerfile
 
 showMsg 'ci clean go build'
 
 showMsg 'ci docker push'
-docker push "docker images"
+docker push registry.cn-chengdu.aliyuncs.com/wmicroservice/hks-core:b0.1
 
 # showMsg 'ci git push'
 # git push
