@@ -12,13 +12,20 @@ func initRouter(router *gin.Engine) {
 	initNoAuthRouter(router)
 }
 
+// 不需要登录的接口
 func initNoAuthRouter(r *gin.Engine) {
 	user := r.Group("/api/user")
 	userGroup := user.Group("/")
 	{
-		// 获取信息
-		userGroup.GET("/get",getUserByID)
-		userGroup.GET("/list",listUser)
-		userGroup.GET("/register",registerUser)
+		userGroup.GET("/get", getUserByID)
+		userGroup.GET("/list", listUser)
+		userGroup.GET("/register", registerUser)
+	}
+	event := r.Group("/api/event")
+	eventGroup := event.Group("/")
+	{
+		eventGroup.GET("/get", getEventByID)
+		eventGroup.GET("/list", listEvent)
+		eventGroup.GET("/register", registerEvent)
 	}
 }
