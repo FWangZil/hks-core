@@ -341,6 +341,9 @@ definitions:
       gender:
         type: integer
         description: 性别 1-男 2-女
+      age:
+        type: integer
+        description: 年龄
       type:
         type: integer
         description: 用户类型 1-用户 2-热心群众，其他安保人员 3-警察

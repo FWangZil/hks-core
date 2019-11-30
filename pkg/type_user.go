@@ -14,6 +14,7 @@ type User struct {
 	Password        string          `json:"password" gorm:"size:200"`      // 用户登录密码
 	IDCard          string          `json:"idCard" gorm:"size:200"`        // 身份证号码 警员标志码
 	Gender          uint            `json:"gender" gorm:"size:2"`          // 性别
+	Age             uint            `json:"age" gorm:"size:10"`            // 用户年龄
 	Type            uint            `json:"type" gorm:"size:2"`            // 用户类型
 	Address         string          `json:"address" gorm:"size:200"`       // 警察的话是警局 保安是负责街区 用户是常用活动范围
 	Longitude       decimal.Decimal `json:"longitude" gorm:"type:decimal"` // 经度

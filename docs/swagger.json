@@ -4,15 +4,21 @@
     "version": "1.0.0",
     "title": "出行安全卫士接口文档"
   },
-  "schemes": ["http"],
+  "schemes": [
+    "http"
+  ],
   "basePath": "/api",
   "paths": {
     "/user/get": {
       "get": {
         "summary": "获取单个用户信息",
         "operationId": "getUserByQuery",
-        "produces": ["application/json"],
-        "tags": ["user"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "user"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -48,8 +54,12 @@
       "get": {
         "summary": "获取用户列表信息",
         "operationId": "listUser",
-        "produces": ["application/json"],
-        "tags": ["user"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "user"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -97,8 +107,12 @@
       "post": {
         "summary": "用户注册接口",
         "operationId": "registerUser",
-        "produces": ["application/json"],
-        "tags": ["user"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "user"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -123,8 +137,12 @@
       "put": {
         "summary": "添加用户亲友",
         "operationId": "addRelationship",
-        "produces": ["application/json"],
-        "tags": ["user"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "user"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -149,8 +167,12 @@
       "get": {
         "summary": "获取用户当前实时地址",
         "operationId": "getLocation",
-        "produces": ["application/json"],
-        "tags": ["userLocation"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "userLocation"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -180,8 +202,12 @@
       "get": {
         "summary": "获取用户当前实时地址",
         "operationId": "listUserLocations",
-        "produces": ["application/json"],
-        "tags": ["userLocation"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "userLocation"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -211,8 +237,12 @@
       "get": {
         "summary": "获取用户当前实时地址",
         "operationId": "getRelationship",
-        "produces": ["application/json"],
-        "tags": ["user"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "user"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -242,8 +272,12 @@
       "put": {
         "summary": "更新用户实时地址",
         "operationId": "setUserLocation",
-        "produces": ["application/json"],
-        "tags": ["userLocation"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "userLocation"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -268,8 +302,12 @@
       "get": {
         "summary": "获取单个事件信息",
         "operationId": "getEventByID",
-        "produces": ["application/json"],
-        "tags": ["event"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "event"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -299,8 +337,12 @@
       "get": {
         "summary": "获取事件列表信息",
         "operationId": "listEvent",
-        "produces": ["application/json"],
-        "tags": ["event"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "event"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -372,8 +414,12 @@
       "post": {
         "summary": "事件注册接口",
         "operationId": "registerEvent",
-        "produces": ["application/json"],
-        "tags": ["event"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "event"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -398,8 +444,12 @@
       "post": {
         "summary": "事件更新接口",
         "operationId": "updateEvent",
-        "produces": ["application/json"],
-        "tags": ["event"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "event"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -444,6 +494,10 @@
         "gender": {
           "type": "integer",
           "description": "性别 1-男 2-女"
+        },
+        "age": {
+          "type": "integer",
+          "description": "年龄"
         },
         "type": {
           "type": "integer",
