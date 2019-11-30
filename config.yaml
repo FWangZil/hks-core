@@ -1,6 +1,6 @@
 database:
   dialect: mysql
-  dsn: root:"password"@tcp("ip":3306)/"database name?charset=utf8mb4&parseTime=true&loc=PRC
+  dsn: root:123456@tcp(127.0.0.1:3306)/hks?charset=utf8mb4&parseTime=true&loc=PRC
   debug: true
 
 gin:
@@ -11,4 +11,4 @@ session:
   network: tcp
   address: ip:6379
   password:
-  keyPairs: 1914e743-9845-41b0-b583-bbb6e51fdaea
+  keyPairs: 1914e743-9845-41b0-b583-bcc6e51fdaea
