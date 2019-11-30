@@ -124,7 +124,7 @@ func addRelationship(c *gin.Context) {
 
 // getRelationship 获取用户亲友关系接口
 func getRelationship(c *gin.Context) {
-	userID, err := util.ParseUint(c.Query("userID"))
+	userID, _ := util.ParseUint(c.Query("userID"))
 	if userID == 0 {
 		fail(c, fmt.Errorf("请传入用户ID"))
 		return
