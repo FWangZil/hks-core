@@ -130,14 +130,3 @@ func logoutUser(c *gin.Context) {
 	ok(c, nil)
 }
 
-// logout 退出登录
-func logoutAdmin(c *gin.Context) {
-	session := sessions.Default(c)
-	session.Delete("adminID")
-	err := session.Save()
-	if err != nil {
-		log.Println("退出登录时 session 保存过程出错")
-		log.Println(err)
-	}
-	ok(c, nil)
-}
