@@ -13,6 +13,8 @@ type repoI interface {
 	ListUser(query Query) ([]pkg.User, uint, error)
 	// UserRegister 用户注册方法
 	UserRegister(user *pkg.User) (*pkg.User, error)
+	// AddRelationship 增加亲友关系
+	AddRelationship(relation *pkg.Relative) (*pkg.Relative, error)
 
 	// About Locations
 	// GetLocation 获取用户实时地址

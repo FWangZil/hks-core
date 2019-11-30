@@ -20,6 +20,7 @@ func initNoAuthRouter(r *gin.Engine) {
 		userGroup.GET("/get", getUserByQuery)
 		userGroup.GET("/list", listUser)
 		userGroup.POST("/register", registerUser)
+		userGroup.PUT("/add/relationship", addRelationship)
 	}
 	location := user.Group("/location")
 	{
@@ -34,5 +35,6 @@ func initNoAuthRouter(r *gin.Engine) {
 		eventGroup.GET("/get", getEventByID)
 		eventGroup.GET("/list", listEvent)
 		eventGroup.POST("/register", registerEvent)
+		eventGroup.PUT("/update", updateEvent)
 	}
 }

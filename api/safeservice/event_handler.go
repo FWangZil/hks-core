@@ -70,7 +70,7 @@ func listEvent(c *gin.Context) {
 	})
 }
 
-// registerEvent 事件注册借口
+// registerEvent 事件注册接口
 func registerEvent(c *gin.Context) {
 	param := pkg.Event{}
 	if err := c.ShouldBind(&param); err != nil {
@@ -80,6 +80,25 @@ func registerEvent(c *gin.Context) {
 	}
 	param.Time = time.Now()
 	eventInfo, err := event.Repo.EventRegister(&param)
+	if err != nil {
+		fail(c, err)
+		return
+	}
+	ok(c, resp{
+		"event": eventInfo,
+	})
+}
+
+// updateEvent 事件更新接口
+func updateEvent(c *gin.Context) {
+	param := pkg.Event{}
+	if err := c.ShouldBind(&param); err != nil {
+		log.Println(fmt.Errorf("参数错误:%w", err))
+		fail(c, errkit.New("参数错误"))
+		return
+	}
+	param.Time = time.Now()
+	eventInfo, err := event.Repo.UpdateEvent(&param)
 	if err != nil {
 		fail(c, err)
 		return

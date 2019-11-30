@@ -29,6 +29,7 @@ func (c Query) where() func(db *gorm.DB) *gorm.DB {
 		if len(c.Mobile) > 0 {
 			db = db.Where("mobile = ?", c.Mobile)
 		}
+		db = db.Preload("UserLocationArr").Preload("RelativeArr")
 		return db
 	}
 }

@@ -64,7 +64,7 @@ func listUser(c *gin.Context) {
 	})
 }
 
-// registerUser 用户注册借口
+// registerUser 用户注册接口
 func registerUser(c *gin.Context) {
 	param := pkg.User{}
 	if err := c.ShouldBind(&param); err != nil {
@@ -89,6 +89,30 @@ func registerUser(c *gin.Context) {
 		}
 	}
 	userInfo, err := user.Repo.UserRegister(&param)
+	if err != nil {
+		fail(c, err)
+		return
+	}
+	ok(c, resp{
+		"user": userInfo,
+	})
+}
+
+// addRelationship 用户注册接口
+func addRelationship(c *gin.Context) {
+	param := pkg.Relative{}
+	if err := c.ShouldBind(&param); err != nil {
+		log.Println(fmt.Errorf("参数错误:%w", err))
+		fail(c, errkit.New("参数错误"))
+		return
+	}
+	if len(param.Mobile) < 0 {
+		if err := util.ValiateMobileNumber(param.Mobile); err != nil {
+			fail(c, fmt.Errorf("手机号码格式错误"))
+			return
+		}
+	}
+	userInfo, err := user.Repo.AddRelationship(&param)
 	if err != nil {
 		fail(c, err)
 		return

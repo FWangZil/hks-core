@@ -43,6 +43,14 @@ func (repo sqlRepo) EventRegister(event *pkg.Event) (*pkg.Event, error) {
 	return event, nil
 }
 
+// UpdateEvent 更新事件状态
+func (repo sqlRepo) UpdateEvent(event *pkg.Event) (*pkg.Event, error) {
+	if err := repo.db.Model(&pkg.Event{}).Update(&event).Error; err != nil {
+		return nil, fmt.Errorf("注册事件信息发生错误：%w", err)
+	}
+	return event, nil
+}
+
 // count 获取事件记录数量
 func (repo sqlRepo) count(query Query) (uint, error) {
 	var count uint

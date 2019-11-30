@@ -37,10 +37,18 @@ func (repo sqlRepo) ListUser(query Query) ([]pkg.User, uint, error) {
 
 // UserRegister 用户注册方法
 func (repo sqlRepo) UserRegister(user *pkg.User) (*pkg.User, error) {
-	if err := repo.db.Model(&pkg.User{}).Create(&user).Error; err != nil {
+	if err := repo.db.Model(&pkg.User{}).Create(user).Error; err != nil {
 		return nil, fmt.Errorf("注册用户信息发生错误：%w", err)
 	}
 	return user, nil
+}
+
+// AddRelationship 用户注册方法
+func (repo sqlRepo) AddRelationship(relation *pkg.Relative) (*pkg.Relative, error) {
+	if err := repo.db.Model(&pkg.Relative{}).Create(relation).Error; err != nil {
+		return nil, fmt.Errorf("注册用户信息发生错误：%w", err)
+	}
+	return relation, nil
 }
 
 // count 获取用户记录数量

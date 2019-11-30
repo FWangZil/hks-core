@@ -9,4 +9,7 @@ type repoI interface {
 	ListEvent(query Query) ([]pkg.Event, uint, error)
 	// EventRegister 事件注册方法
 	EventRegister(event *pkg.Event) (*pkg.Event, error)
+
+	// UpdateEvent 更新事件状态
+	UpdateEvent(event *pkg.Event) (*pkg.Event, error)
 }

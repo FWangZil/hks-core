@@ -71,7 +71,7 @@ paths:
           type: integer
   /user/register:
     post:
-      summary: 用户注册借口
+      summary: 用户注册接口
       operationId: registerUser
       produces:
         - application/json
@@ -167,7 +167,7 @@ paths:
 
   /event/register:
     post:
-      summary: 事件注册借口
+      summary: 事件注册接口
       operationId: registerEvent
       produces:
         - application/json
