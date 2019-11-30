@@ -20,7 +20,7 @@ func initRouter(router *gin.Engine) {
 
 	router.POST("/api/login", login)
 	router.POST("/api/logout", logoutUser)
-	router.GET("/api/user/register", registerUser)
+	router.POST("/api/user/register", registerUser)
 	// 身份拦截
 	//router.Use(auth)
 
@@ -46,7 +46,7 @@ func initNeedAuthRouter(r *gin.Engine) {
 		location.GET("/status", getUserStatus)
 		location.GET("/get", getLocation)
 		location.GET("/list", listUserLocations)
-		location.POST("/set", setUserLocation)
+		location.PUT("/set", setUserLocation)
 	}
 	event := r.Group("/api/event")
 	eventGroup := event.Group("/")

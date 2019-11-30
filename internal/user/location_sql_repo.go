@@ -11,7 +11,7 @@ import (
 // GetLocation 获取用户实时地址
 func (repo sqlRepo) GetLocation(userID uint) (*pkg.UserLocation, error) {
 	ul := pkg.UserLocation{}
-	if err := repo.db.Model(&pkg.UserLocation{}).Where("user_id=? and type = ?", userID, pkg.NowLocations).First(&ul).Error; err != nil {
+	if err := repo.db.Model(&pkg.UserLocation{}).Where("user_id = ? and type = ?", userID, pkg.NowLocations).First(&ul).Error; err != nil {
 		return nil, err
 	}
 	return &ul, nil
@@ -20,11 +20,11 @@ func (repo sqlRepo) GetLocation(userID uint) (*pkg.UserLocation, error) {
 // SetUserLocation 更新用户实时地址
 func (repo sqlRepo) SetUserLocation(userID uint, longitude, latitude decimal.Decimal) (*pkg.UserLocation, error) {
 	ul := pkg.UserLocation{}
-	if err := repo.db.Model(&pkg.UserLocation{}).Where("user_id=? and type = ?", userID, pkg.NowLocations).First(&ul).Error; err != nil {
-		return nil, err
+	if err := repo.db.Model(&pkg.UserLocation{}).Where("user_id = ? and type = ?", userID, pkg.NowLocations).First(&ul).Error; err != nil {
+		//return nil, err
 	}
-	if err := repo.db.Model(&pkg.UserLocation{}).Delete(&ul).Error; err != nil {
-		return nil, err
+	if err := repo.db.Model(&pkg.UserLocation{}).Where("id = ?", ul.ID).Update("type", pkg.HistoryLocation).Error; err != nil {
+		//return nil, err
 	}
 	cul := pkg.UserLocation{
 		UserID:    userID,
@@ -33,7 +33,7 @@ func (repo sqlRepo) SetUserLocation(userID uint, longitude, latitude decimal.Dec
 		Latitude:  latitude,
 		Type:      pkg.NowLocations,
 	}
-	if err := repo.db.Model(&pkg.UserLocation{}).Where("user_id=?", userID).Create(&ul).Error; err != nil {
+	if err := repo.db.Model(&pkg.UserLocation{}).Create(&cul).Error; err != nil {
 		return nil, err
 	}
 	return &cul, nil

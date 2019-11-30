@@ -4,15 +4,21 @@
     "version": "1.0.0",
     "title": "出行安全卫士接口文档"
   },
-  "schemes": ["http"],
+  "schemes": [
+    "http"
+  ],
   "basePath": "/",
   "paths": {
     "/api/login": {
       "post": {
         "summary": "登录",
         "operationId": "login",
-        "produces": ["application/json"],
-        "tags": ["login"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "login"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -38,11 +44,15 @@
       }
     },
     "/api/logout": {
-      "get": {
+      "post": {
         "summary": "退出",
         "operationId": "logout",
-        "produces": ["application/json"],
-        "tags": ["login"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "login"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -57,8 +67,12 @@
       "get": {
         "summary": "获取当前用户",
         "operationId": "currentUser",
-        "produces": ["application/json"],
-        "tags": ["enter"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "enter"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -73,8 +87,12 @@
       "get": {
         "summary": "获取单个用户信息",
         "operationId": "getUserByQuery",
-        "produces": ["application/json"],
-        "tags": ["user"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "user"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -110,8 +128,12 @@
       "get": {
         "summary": "获取用户列表信息",
         "operationId": "listUser",
-        "produces": ["application/json"],
-        "tags": ["user"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "user"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -159,8 +181,12 @@
       "post": {
         "summary": "用户注册接口",
         "operationId": "registerUser",
-        "produces": ["application/json"],
-        "tags": ["user"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "user"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -171,22 +197,84 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "description": "请求参数",
-            "schema": {
-              "$ref": "#/definitions/UserCreateParam"
-            }
+            "name": "name",
+            "in": "query",
+            "description": "用户类型",
+            "type": "string"
+          },
+          {
+            "name": "mobile",
+            "in": "query",
+            "description": "用户性别",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "页数",
+            "type": "string"
+          },
+          {
+            "name": "idCard",
+            "in": "query",
+            "description": "页码",
+            "type": "string"
+          },
+          {
+            "name": "gender",
+            "in": "query",
+            "description": "用户类型",
+            "type": "integer"
+          },
+          {
+            "name": "age",
+            "in": "query",
+            "description": "用户性别",
+            "type": "integer"
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "description": "页数",
+            "type": "integer"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "description": "页码",
+            "type": "string"
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "description": "用户类型",
+            "type": "number"
+          },
+          {
+            "name": "latitude",
+            "in": "query",
+            "description": "用户性别",
+            "type": "number"
+          },
+          {
+            "name": "photo",
+            "in": "query",
+            "description": "页数",
+            "type": "string"
           }
         ]
       }
     },
     "/api/user/add/relationship": {
-      "put": {
+      "post": {
         "summary": "添加用户亲友",
         "operationId": "addRelationship",
-        "produces": ["application/json"],
-        "tags": ["user"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "user"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -197,12 +285,22 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "description": "请求参数",
-            "schema": {
-              "$ref": "#/definitions/addRelationshipParam"
-            }
+            "name": "relationship",
+            "in": "query",
+            "description": "用户亲友关系",
+            "type": "string"
+          },
+          {
+            "name": "mobile",
+            "in": "query",
+            "description": "手机号码",
+            "type": "string"
+          },
+          {
+            "name": "userID",
+            "in": "query",
+            "description": "用户ID",
+            "type": "integer"
           }
         ]
       }
@@ -211,8 +309,12 @@
       "get": {
         "summary": "获取用户当前实时地址",
         "operationId": "getLocation",
-        "produces": ["application/json"],
-        "tags": ["userLocation"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "userLocation"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -242,8 +344,12 @@
       "get": {
         "summary": "获取用户当前实时地址",
         "operationId": "listUserLocations",
-        "produces": ["application/json"],
-        "tags": ["userLocation"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "userLocation"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -273,8 +379,12 @@
       "get": {
         "summary": "获取用户当前实时地址",
         "operationId": "getRelationship",
-        "produces": ["application/json"],
-        "tags": ["user"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "user"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -304,8 +414,12 @@
       "put": {
         "summary": "更新用户实时地址",
         "operationId": "setUserLocation",
-        "produces": ["application/json"],
-        "tags": ["userLocation"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "userLocation"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -316,12 +430,22 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "description": "请求参数",
-            "schema": {
-              "$ref": "#/definitions/setUserLocationParam"
-            }
+            "name": "userID",
+            "in": "query",
+            "description": "用户ID",
+            "type": "integer"
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "description": "经度",
+            "type": "number"
+          },
+          {
+            "name": "latitude",
+            "in": "query",
+            "description": "维度",
+            "type": "number"
           }
         ]
       }
@@ -330,8 +454,12 @@
       "get": {
         "summary": "获取单个事件信息",
         "operationId": "getEventByID",
-        "produces": ["application/json"],
-        "tags": ["event"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "event"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -361,8 +489,12 @@
       "get": {
         "summary": "获取事件列表信息",
         "operationId": "listEvent",
-        "produces": ["application/json"],
-        "tags": ["event"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "event"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -434,8 +566,12 @@
       "post": {
         "summary": "事件注册接口",
         "operationId": "registerEvent",
-        "produces": ["application/json"],
-        "tags": ["event"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "event"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -446,22 +582,48 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "description": "请求参数",
-            "schema": {
-              "$ref": "#/definitions/EventCreateParam"
-            }
+            "name": "level",
+            "in": "query",
+            "description": "事件等级",
+            "type": "integer"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "description": "地址",
+            "type": "string"
+          },
+          {
+            "name": "userID",
+            "in": "query",
+            "description": "用户ID",
+            "type": "integer"
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "description": "经度",
+            "type": "number"
+          },
+          {
+            "name": "latitude",
+            "in": "query",
+            "description": "维度",
+            "type": "number"
           }
         ]
       }
     },
     "/api/event/update": {
-      "post": {
+      "put": {
         "summary": "事件更新接口",
         "operationId": "updateEvent",
-        "produces": ["application/json"],
-        "tags": ["event"],
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "event"
+        ],
         "responses": {
           "200": {
             "description": "成功",
@@ -472,12 +634,52 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "description": "请求参数",
-            "schema": {
-              "$ref": "#/definitions/EventUpdateParam"
-            }
+            "name": "level",
+            "in": "query",
+            "description": "事件等级",
+            "type": "integer"
+          },
+          {
+            "name": "address",
+            "in": "query",
+            "description": "地址",
+            "type": "string"
+          },
+          {
+            "name": "userID",
+            "in": "query",
+            "description": "用户ID",
+            "type": "integer"
+          },
+          {
+            "name": "longitude",
+            "in": "query",
+            "description": "经度",
+            "type": "number"
+          },
+          {
+            "name": "latitude",
+            "in": "query",
+            "description": "维度",
+            "type": "number"
+          },
+          {
+            "name": "file",
+            "in": "query",
+            "description": "存证文件",
+            "type": "string"
+          },
+          {
+            "name": "fixerID",
+            "in": "query",
+            "description": "警察ID",
+            "type": "integer"
+          },
+          {
+            "name": "helperID",
+            "in": "query",
+            "description": "热心群众/保安ID",
+            "type": "integer"
           }
         ]
       }

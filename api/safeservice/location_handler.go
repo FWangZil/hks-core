@@ -72,9 +72,9 @@ func listUserLocations(c *gin.Context) {
 // setUserLocation 更新用户实时地址
 func setUserLocation(c *gin.Context) {
 	param := struct {
-		UserID    uint            `json:"userID"`
-		Longitude decimal.Decimal `json:"longitude"` // 经度
-		Latitude  decimal.Decimal `json:"latitude"`  // 维度
+		UserID    uint            `json:"userID" form:"userID"`
+		Longitude decimal.Decimal `json:"longitude" form:"longitude"` // 经度
+		Latitude  decimal.Decimal `json:"latitude" form:"latitude"`   // 维度
 	}{}
 	if err := c.ShouldBindQuery(&param); err != nil {
 		log.Println(fmt.Errorf("参数错误:%w", err))

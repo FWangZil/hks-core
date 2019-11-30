@@ -54,7 +54,7 @@ func (repo sqlRepo) AddRelationship(relation *pkg.Relative) (*pkg.Relative, erro
 // AddRelationship 获取用户亲友关系列表
 func (repo sqlRepo) GetUserRelationship(userID uint) ([]pkg.Relative, error) {
 	var relativeArr []pkg.Relative
-	if err := repo.db.Model(&pkg.Relative{}).Where("user_id", userID).Find(&relativeArr).Error; err != nil {
+	if err := repo.db.Model(&pkg.Relative{}).Where("user_id = ?", userID).Find(&relativeArr).Error; err != nil {
 		return nil, fmt.Errorf("注册用户信息发生错误：%w", err)
 	}
 	return relativeArr, nil

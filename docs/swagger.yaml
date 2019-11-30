@@ -135,14 +135,54 @@ paths:
           schema:
             type: object
       parameters:
-        - name: body
-          in: body
-          description: 请求参数
-          schema:
-            $ref: "#/definitions/UserCreateParam"
+        - name: name
+          in: query
+          description: 用户类型
+          type: string
+        - name: mobile
+          in: query
+          description: 用户性别
+          type: string
+        - name: password
+          in: query
+          description: 页数
+          type: string
+        - name: idCard
+          in: query
+          description: 页码
+          type: string
+        - name: gender
+          in: query
+          description: 用户类型
+          type: integer
+        - name: age
+          in: query
+          description: 用户性别
+          type: integer
+        - name: type
+          in: query
+          description: 页数
+          type: integer
+        - name: address
+          in: query
+          description: 页码
+          type: string
+        - name: longitude
+          in: query
+          description: 用户类型
+          type: number
+        - name: latitude
+          in: query
+          description: 用户性别
+          type: number
+        - name: photo
+          in: query
+          description: 页数
+          type: string
+
 
   /api/user/add/relationship:
-    put:
+    post:
       summary: 添加用户亲友
       operationId: addRelationship
       produces:
@@ -155,11 +195,18 @@ paths:
           schema:
             type: object
       parameters:
-        - name: body
-          in: body
-          description: 请求参数
-          schema:
-            $ref: "#/definitions/addRelationshipParam"
+        - name: relationship
+          in: query
+          description: 用户亲友关系
+          type: string
+        - name: mobile
+          in: query
+          description: 手机号码
+          type: string
+        - name: userID
+          in: query
+          description: 用户ID
+          type: integer
 
 
   /api/user/location/get:
@@ -248,11 +295,18 @@ paths:
           schema:
             type: object
       parameters:
-        - name: body
-          in: body
-          description: 请求参数
-          schema:
-            $ref: "#/definitions/setUserLocationParam"
+        - name: userID
+          in: query
+          description: 用户ID
+          type: integer
+        - name: longitude
+          in: query
+          description: 经度
+          type: number
+        - name: latitude
+          in: query
+          description: 维度
+          type: number
 
 
   /api/event/get:
@@ -345,15 +399,30 @@ paths:
           schema:
             type: object
       parameters:
-        - name: body
-          in: body
-          description: 请求参数
-          schema:
-            $ref: "#/definitions/EventCreateParam"
+        - name: level
+          in: query
+          description: 事件等级
+          type: integer
+        - name: address
+          in: query
+          description: 地址
+          type: string
+        - name: userID
+          in: query
+          description: 用户ID
+          type: integer
+        - name: longitude
+          in: query
+          description: 经度
+          type: number
+        - name: latitude
+          in: query
+          description: 维度
+          type: number
 
 
   /api/event/update:
-    post:
+    put:
       summary: 事件更新接口
       operationId: updateEvent
       produces:
@@ -366,11 +435,38 @@ paths:
           schema:
             type: object
       parameters:
-        - name: body
-          in: body
-          description: 请求参数
-          schema:
-            $ref: "#/definitions/EventUpdateParam"
+        - name: level
+          in: query
+          description: 事件等级
+          type: integer
+        - name: address
+          in: query
+          description: 地址
+          type: string
+        - name: userID
+          in: query
+          description: 用户ID
+          type: integer
+        - name: longitude
+          in: query
+          description: 经度
+          type: number
+        - name: latitude
+          in: query
+          description: 维度
+          type: number
+        - name: file
+          in: query
+          description: 存证文件
+          type: string
+        - name: fixerID
+          in: query
+          description: 警察ID
+          type: integer
+        - name: helperID
+          in: query
+          description: 热心群众/保安ID
+          type: integer
 
 # 引用参数
 definitions:

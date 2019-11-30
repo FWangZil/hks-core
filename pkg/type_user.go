@@ -27,7 +27,7 @@ type User struct {
 // UserLocation 用户的实时位置点
 type UserLocation struct {
 	GormModel
-	UserID    uint            `json:"photo" gorm:"size:11" form:"photo"`              // 用户ID
+	UserID    uint            `json:"userID" gorm:"size:11" form:"userID"`            // 用户ID
 	Time      time.Time       `json:"time" gorm:"type:date" form:"time"`              // 轨迹点记录时间
 	Longitude decimal.Decimal `json:"longitude" gorm:"type:decimal" form:"longitude"` // 经度
 	Latitude  decimal.Decimal `json:"latitude" gorm:"type:decimal" form:"latitude"`   // 维度
