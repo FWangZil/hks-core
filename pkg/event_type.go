@@ -20,3 +20,13 @@ type Event struct {
 	FixerID   uint            `json:"fixerID" gorm:"size:11"`        // 处理人ID 警察
 	HelperID  uint            `json:"helperID" gorm:"size:11"`       // 帮助人ID 保安 热心群众
 }
+
+// WarningArea 危险区域
+type WarningArea struct {
+	GormModel
+	Longitude1 decimal.Decimal `json:"longitude1" gorm:"type:decimal"` // 经度1
+	Latitude1  decimal.Decimal `json:"latitude1" gorm:"type:decimal"`  // 维度1
+	Longitude2 decimal.Decimal `json:"longitude2" gorm:"type:decimal"` // 经度2
+	Latitude2  decimal.Decimal `json:"latitude2" gorm:"type:decimal"`  // 维度2
+	Level      uint            `json:"level" gorm:"size:2"`            // 事件等级
+}

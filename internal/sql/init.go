@@ -31,6 +31,7 @@ func Init() {
 		&pkg.User{},
 		&pkg.UserLocation{},
 		&pkg.Event{},
+		&pkg.WarningArea{},
 	)
 	log.Print("All table AutoMigrate finish.")
 }

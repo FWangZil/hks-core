@@ -1,6 +1,8 @@
 package pkg
 
 import (
+	"time"
+
 	"github.com/shopspring/decimal"
 )
 
@@ -20,6 +22,11 @@ const (
 	StatusDelivery = 2
 	StatusPolice   = 3
 	StatusEnd      = 4
+)
+
+const (
+	NowLocations    = 1
+	HistoryLocation = 2
 )
 
 // User 用户
@@ -42,6 +49,8 @@ type User struct {
 type UserLocation struct {
 	GormModel
 	UserID    uint            `json:"userID" gorm:"size:11"`
+	Time      time.Time       `json:"time" gorm:"type:date"`         // 轨迹点记录时间
 	Longitude decimal.Decimal `json:"longitude" gorm:"type:decimal"` // 经度
 	Latitude  decimal.Decimal `json:"latitude" gorm:"type:decimal"`  // 维度
+	Type      uint            `json:"type" gorm:"size:2"`            // 该位置嗲状态
 }

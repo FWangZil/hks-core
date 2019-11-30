@@ -1,59 +1,51 @@
 package user
 
 import (
-	"fmt"
 	"hks/hks-core/pkg"
 	"math"
+	"time"
 
 	"github.com/shopspring/decimal"
-
-	"github.com/meikeland/errkit"
-
-	"github.com/jinzhu/gorm"
 )
-
-type sqlRepo struct {
-	db *gorm.DB
-}
-
-// GetUserByQuery 获取用户详情
-func (repo sqlRepo) GetUserByQuery(query Query) (*pkg.User, error) {
-	user := &pkg.User{}
-	if err := repo.db.Model(user).Scopes(query.where()).First(user).Error; err != nil {
-		return nil, fmt.Errorf("获取用户信息发生错误：%w", err)
-	}
-	return user, nil
-}
-
-// ListUser 获取用户详情
-func (repo sqlRepo) ListUser(query Query) ([]pkg.User, uint, error) {
-	count, err := repo.count(query)
-	if err != nil {
-		return nil, 0, err
-	}
-	var users []pkg.User
-	if err := repo.db.Model(&pkg.User{}).Scopes(query.where()).Offset(query.Offset).Limit(query.Limit).Find(&users).Error; err != nil {
-		return nil, 0, fmt.Errorf("获取用户信息发生错误：%w", err)
-	}
-	return users, count, nil
-}
-
-// UserRegister 用户注册方法
-func (repo sqlRepo) UserRegister(user *pkg.User) (*pkg.User, error) {
-	if err := repo.db.Model(&pkg.User{}).Create(&user).Error; err != nil {
-		return nil, fmt.Errorf("注册用户信息发生错误：%w", err)
-	}
-	return user, nil
-}
 
 // GetLocation 获取用户实时地址
 func (repo sqlRepo) GetLocation(userID uint) (*pkg.UserLocation, error) {
+	ul := pkg.UserLocation{}
+	if err := repo.db.Model(&pkg.UserLocation{}).Where("user_id=? and type = ?", userID, pkg.NowLocations).First(&ul).Error; err != nil {
+		return nil, err
+	}
+	return &ul, nil
+}
 
+// SetUserLocation 更新用户实时地址
+func (repo sqlRepo) SetUserLocation(userID uint, longitude, latitude decimal.Decimal) (*pkg.UserLocation, error) {
+	ul := pkg.UserLocation{}
+	if err := repo.db.Model(&pkg.UserLocation{}).Where("user_id=? and type = ?", userID, pkg.NowLocations).First(&ul).Error; err != nil {
+		return nil, err
+	}
+	if err := repo.db.Model(&pkg.UserLocation{}).Delete(&ul).Error; err != nil {
+		return nil, err
+	}
+	cul := pkg.UserLocation{
+		UserID:    userID,
+		Time:      time.Now(),
+		Longitude: longitude,
+		Latitude:  latitude,
+		Type:      pkg.NowLocations,
+	}
+	if err := repo.db.Model(&pkg.UserLocation{}).Where("user_id=?", userID).Create(&ul).Error; err != nil {
+		return nil, err
+	}
+	return &cul, nil
 }
 
 // ListLocations 列出用户实时地址
-func (repo sqlRepo) ListLocations() {
-
+func (repo sqlRepo) ListUserLocations(userID uint) ([]*pkg.UserLocation, error) {
+	var uls []*pkg.UserLocation
+	if err := repo.db.Model(&pkg.UserLocation{}).Where("user_id=?", userID).Find(&uls).Error; err != nil {
+		return nil, err
+	}
+	return uls, nil
 }
 
 // GetUserStatus 获取用户目前所在区域的危险情况
@@ -69,7 +61,7 @@ func (repo sqlRepo) GetUserStatus(longitude, latitude decimal.Decimal) (bool, er
 		lat2, _ := Latitude0.Float64()
 		lng1, _ := longitude.Float64()
 		lng2, _ := longitude0.Float64()
-		distance := repo.GetDistance(lat1, lat2, lng1, lng2)
+		distance := repo.getDistance(lat1, lat2, lng1, lng2)
 		if distance > 10 {
 			return true, nil
 		}
@@ -77,17 +69,8 @@ func (repo sqlRepo) GetUserStatus(longitude, latitude decimal.Decimal) (bool, er
 	return false, nil
 }
 
-// count 获取用户记录数量
-func (repo sqlRepo) count(query Query) (uint, error) {
-	var count uint
-	if err := repo.db.Model(&pkg.User{}).Scopes(query.where()).Count(&count).Error; err != nil {
-		return 0, errkit.Wrap(err, "获取用户量失败")
-	}
-	return count, nil
-}
-
 //返回单位为：千米
-func (repo sqlRepo) GetDistance(lat1, lat2, lng1, lng2 float64) float64 {
+func (repo sqlRepo) getDistance(lat1, lat2, lng1, lng2 float64) float64 {
 	radius := 6371000.0 //6378137.0
 	rad := math.Pi / 180.0
 	lat1 = lat1 * rad

@@ -20,8 +20,13 @@ func initNoAuthRouter(r *gin.Engine) {
 		userGroup.GET("/get", getUserByQuery)
 		userGroup.GET("/list", listUser)
 		userGroup.POST("/register", registerUser)
-
-		userGroup.GET("/status", getUserStatus)
+	}
+	location := user.Group("/location")
+	{
+		location.GET("/status", getUserStatus)
+		location.GET("/get", getLocation)
+		location.GET("/list", listUserLocations)
+		location.POST("/set", setUserLocation)
 	}
 	event := r.Group("/api/event")
 	eventGroup := event.Group("/")
