@@ -1,0 +1,127 @@
+swagger: "2.0"
+info:
+  version: 1.0.0
+  title: 出行安全卫士接口文档
+schemes:
+  - http
+basePath: /api
+paths:
+  /user/get:
+    get:
+      summary: 获取单个用户信息
+      operationId: getUserByQuery
+      produces:
+        - application/json
+      tags:
+        - user
+      responses:
+        200:
+          description: 成功
+          schema:
+            type: object
+      parameters:
+        - name: token
+          in: header
+          description: token
+          required: false
+          type: string
+        - name: userID
+          in: query
+          description: 用户ID
+          type: integer
+        - name: mobile
+          in: query
+          description: 用户手机号码
+          type: string
+
+  /user/list:
+    get:
+      summary: 获取用户列表信息
+      operationId: listUser
+      produces:
+        - application/json
+      tags:
+        - user
+      responses:
+        200:
+          description: 成功
+          schema:
+            type: object
+      parameters:
+        - name: token
+          in: header
+          description: token
+          required: false
+          type: string
+        - name: type
+          in: query
+          description: 用户类型
+          type: integer
+        - name: gender
+          in: query
+          description: 用户性别
+          type: integer
+        - name: pageSize
+          in: query
+          description: 页数
+          type: integer
+        - name: page
+          in: query
+          description: 页码
+          type: integer
+  /user/register:
+    post:
+      summary: 用户注册借口
+      operationId: registerUser
+      produces:
+        - application/json
+      tags:
+        - user
+      responses:
+        200:
+          description: 成功
+          schema:
+            type: object
+      parameters:
+        - name: body
+          in: body
+          description: 请求参数
+          schema:
+            $ref: "#/definitions/UserCreateParam"
+
+# 引用参数
+definitions:
+  # 用户注册参数
+  UserCreateParam:
+    type: object
+    properties:
+      name:
+        type: string
+        description: 用户姓名
+      mobile:
+        type: string
+        description: 手机号码
+      password:
+        type: string
+        description: 用户登录密码
+      idCard:
+        type: string
+        description: 身份证号码 警员标志码
+      gender:
+        type: integer
+        description: 性别
+      type:
+        type: integer
+        description: 用户类型
+      address:
+        type: string
+        description: 警察的话是警局 保安是负责街区 用户是常用活动范围
+      longitude:
+        type: number
+        description: 经度
+      latitude:
+        type: number
+        description: 维度
+      photo:
+        type: string
+        description: 照片

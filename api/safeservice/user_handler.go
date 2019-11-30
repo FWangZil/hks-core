@@ -33,7 +33,7 @@ func getUserByQuery(c *gin.Context) {
 	})
 }
 
-// listUser 通过ID获取用户信息
+// listUser 获取用户列表信息
 func listUser(c *gin.Context) {
 	param := struct {
 		UserID uint `json:"userID" form:"userID"` // 用户自增ID
