@@ -9,7 +9,7 @@ import (
 	"github.com/shopspring/decimal"
 
 	"github.com/gin-gonic/gin"
-	"github.com/meikeland/errkit"
+	"github.com/FWangZil/errkit"
 )
 
 // getUserStatus 通过ID获取用户信息

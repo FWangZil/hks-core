@@ -8,7 +8,7 @@ import (
 	"log"
 
 	"github.com/gin-gonic/gin"
-	"github.com/meikeland/errkit"
+	"github.com/FWangZil/errkit"
 )
 
 // getUserByQuery 通过ID获取用户信息

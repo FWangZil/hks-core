@@ -5,7 +5,7 @@ import (
 	"hks/hks-core/pkg"
 	"time"
 
-	"github.com/meikeland/errkit"
+	"github.com/FWangZil/errkit"
 
 	"github.com/jinzhu/gorm"
 )

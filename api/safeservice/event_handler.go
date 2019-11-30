@@ -9,7 +9,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/meikeland/errkit"
+	"github.com/FWangZil/errkit"
 )
 
 // getEventByID 通过ID获取事件信息

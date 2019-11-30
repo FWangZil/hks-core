@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/meikeland/errkit"
+	"github.com/FWangZil/errkit"
 	"github.com/dgrijalva/jwt-go"
 )
 

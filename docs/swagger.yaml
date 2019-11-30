@@ -25,7 +25,14 @@ paths:
           in: body
           description: 请求参数
           schema:
-            $ref: "#/definitions/login"
+            type: object
+            properties:
+              account:
+                type: string
+                description: 登录账号
+              password:
+                type: string
+                description: 密码
   /logout:
     post:
       summary: 退出

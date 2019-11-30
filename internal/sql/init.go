@@ -7,7 +7,7 @@ import (
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql" // 隐式使用mysql
-	"github.com/meikeland/errkit"
+	"github.com/FWangZil/errkit"
 )
 
 var (
@@ -32,7 +32,7 @@ func Init() {
 		&pkg.UserLocation{},
 		&pkg.Event{},
 		&pkg.WarningArea{},
-		&pkg.Admin{},
+		&pkg.Relative{},
 	)
 	log.Print("All table AutoMigrate finish.")
 }

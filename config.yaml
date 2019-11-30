@@ -9,6 +9,6 @@ gin:
 session:
   size: 10
   network: tcp
-  address: ip:6379
+  address: 127.0.0.1:6379
   password:
-  keyPairs: 1914e743-9845-41b0-b583-bcc6e51fdaea
+  keyPairs: 2015f854-9845-41b0-b583-bcc6e51fdbfb

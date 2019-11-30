@@ -3,6 +3,7 @@ package safeservice
 import (
 	"hks/hks-core/internal/conf"
 	"hks/hks-core/internal/event"
+	"hks/hks-core/internal/opauth"
 	"hks/hks-core/internal/sql"
 	"hks/hks-core/internal/user"
 	"log"
@@ -17,8 +18,9 @@ func Init() {
 	conf.Init() // 配置项初始化
 	sql.Init()  // 数据库初始化
 
-	user.Init()  // 用户模块初始化
-	event.Init() // 事件模块初始化
+	user.Init()   // 用户模块初始化
+	event.Init()  // 事件模块初始化
+	opauth.Init() // 通知模块初始化
 
 	gin.SetMode(conf.GetGin().Mode)
 	r := gin.Default()

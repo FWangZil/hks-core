@@ -7,7 +7,7 @@ import (
 
 type key string
 
-const userKey key = "user"
+const userKey key = "userID"
 const adminKey key = "admin"
 
 // WithUser 往已有的context中注入用户信息

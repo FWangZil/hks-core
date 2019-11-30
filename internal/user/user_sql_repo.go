@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"hks/hks-core/pkg"
 
-	"github.com/meikeland/errkit"
+	"github.com/FWangZil/errkit"
 
 	"github.com/jinzhu/gorm"
 )

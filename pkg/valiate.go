@@ -3,7 +3,7 @@ package pkg
 import (
 	"regexp"
 
-	"github.com/meikeland/errkit"
+	"github.com/FWangZil/errkit"
 )
 
 // ValiateMobileNumber 校验手机号码是否有效

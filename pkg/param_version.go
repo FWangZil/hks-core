@@ -3,7 +3,7 @@ package pkg
 import (
 	"errors"
 
-	"github.com/meikeland/errkit"
+	"github.com/FWangZil/errkit"
 )
 
 // VersionParam 创建新版本信息

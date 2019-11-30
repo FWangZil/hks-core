@@ -1,7 +1,7 @@
 package shared
 
 import (
-	"github.com/meikeland/errkit"
+	"github.com/FWangZil/errkit"
 )
 
 // 常规错误

@@ -1,6 +1,9 @@
 package safeservice
 
 import (
+	"hks/hks-core/internal/conf"
+
+	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 )
 
@@ -10,33 +13,29 @@ func initRouter(router *gin.Engine) {
 	router.Static("/api/docs", "./docs")
 
 	// 运营平台以session作为登录凭证
-	//router.Use(sessions.Sessions("safe", conf.GetSessionStore()))
+	router.Use(sessions.Sessions("safe", conf.GetSessionStore()))
 
-	router.POST("/login", login)
-	router.POST("/logout", logoutUser)
-	router.GET("/currentUser", currentUser) // 获取当前用户
-
+	router.POST("/api/login", login)
+	router.POST("/api/logout", logoutUser)
+	router.POST("/api/user/register", registerUser)
 	// 身份拦截
 	router.Use(auth)
 
-	// initNoAuthRouter 不需要登录的接口
-	initNoAuthRouter(router)
+	router.GET("/api/currentUser", currentUser) // 获取当前用户
+
+	// initNeedAuthRouter 不需要登录的接口
+	initNeedAuthRouter(router)
 
 }
 
 // 不需要登录的接口
-func initNoAuthRouter(r *gin.Engine) {
-	// 统一登录地址
-	// 统一注销地址
-
+func initNeedAuthRouter(r *gin.Engine) {
 	user := r.Group("/api/user")
-	//user.POST("/login")
 	userGroup := user.Group("/")
 	{
 		userGroup.GET("/get", getUserByQuery)
 		userGroup.GET("/get/relationship", getRelationship)
 		userGroup.GET("/list", listUser)
-		userGroup.POST("/register", registerUser)
 		userGroup.PUT("/add/relationship", addRelationship)
 	}
 	location := user.Group("/location")

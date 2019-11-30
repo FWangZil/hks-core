@@ -13,7 +13,7 @@ import (
 
 	"golang.org/x/crypto/bcrypt"
 
-	errkit "github.com/meikeland/errkit"
+	errkit "github.com/FWangZil/errkit"
 )
 
 // ParseUint 转换字符串为uint
