@@ -20,9 +20,9 @@ func initRouter(router *gin.Engine) {
 
 	router.POST("/api/login", login)
 	router.POST("/api/logout", logoutUser)
-	router.POST("/api/user/register", registerUser)
+	router.GET("/api/user/register", registerUser)
 	// 身份拦截
-	router.Use(auth)
+	//router.Use(auth)
 
 	router.GET("/api/currentUser", currentUser) // 获取当前用户
 
@@ -39,7 +39,7 @@ func initNeedAuthRouter(r *gin.Engine) {
 		userGroup.GET("/get", getUserByQuery)
 		userGroup.GET("/get/relationship", getRelationship)
 		userGroup.GET("/list", listUser)
-		userGroup.PUT("/add/relationship", addRelationship)
+		userGroup.POST("/add/relationship", addRelationship)
 	}
 	location := user.Group("/location")
 	{

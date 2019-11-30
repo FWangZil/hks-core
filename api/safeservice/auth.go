@@ -1,14 +1,16 @@
 package safeservice
 
 import (
+	"fmt"
 	"hks/hks-core/internal/opauth"
 	"hks/hks-core/internal/shared"
 	"hks/hks-core/internal/user"
+	"hks/hks-core/util"
 	"log"
 
+	"github.com/FWangZil/errkit"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
-	"github.com/FWangZil/errkit"
 )
 
 // 获取当前登录用户的ID
@@ -83,18 +85,24 @@ func currentLoginUser(c *gin.Context) {
 // login 使用账号和密码进行登录
 func login(c *gin.Context) {
 	param := &struct {
-		Account  string `json:"account"`
-		Password string `json:"password"`
+		Account  string `json:"account" form:"account"`
+		Password string `json:"password" form:"password"`
 	}{}
-	if err := c.ShouldBind(param); err != nil {
+	if err := c.ShouldBindQuery(param); err != nil {
 		fail(c, errkit.Wrap(err, "登录失败，请输入账号和密码"))
 		return
 	}
-	log.Println("param accout",param.Account)
-	log.Println("param password",param.Password)
+	log.Println("param account", param.Account)
+	log.Println("param password", param.Password)
 	userInfo, err := opauth.ACL.Login(param.Account, param.Password)
 	if err != nil {
 		fail(c, errkit.New("登录失败，请检查账号和密码是否正确"))
+		return
+	}
+	token, err := util.Sign(userInfo.ID)
+	if err != nil {
+		log.Println(fmt.Errorf("服务器响应错误:%w", err))
+		fail(c, errkit.New("服务器响应错误"))
 		return
 	}
 	session := sessions.Default(c)
@@ -104,7 +112,8 @@ func login(c *gin.Context) {
 		log.Println(err)
 	}
 	ok(c, resp{
-		"user": userInfo,
+		"user":  userInfo,
+		"token": token,
 	})
 }
 

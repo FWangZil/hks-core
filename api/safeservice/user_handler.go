@@ -7,8 +7,8 @@ import (
 	"hks/hks-core/util"
 	"log"
 
-	"github.com/gin-gonic/gin"
 	"github.com/FWangZil/errkit"
+	"github.com/gin-gonic/gin"
 )
 
 // getUserByQuery 通过ID获取用户信息
@@ -67,7 +67,7 @@ func listUser(c *gin.Context) {
 // registerUser 用户注册接口
 func registerUser(c *gin.Context) {
 	param := pkg.User{}
-	if err := c.ShouldBind(&param); err != nil {
+	if err := c.ShouldBindQuery(&param); err != nil {
 		log.Println(fmt.Errorf("参数错误:%w", err))
 		fail(c, errkit.New("参数错误"))
 		return
@@ -101,7 +101,7 @@ func registerUser(c *gin.Context) {
 // addRelationship 用户增加亲友关系接口
 func addRelationship(c *gin.Context) {
 	param := pkg.Relative{}
-	if err := c.ShouldBind(&param); err != nil {
+	if err := c.ShouldBindQuery(&param); err != nil {
 		log.Println(fmt.Errorf("参数错误:%w", err))
 		fail(c, errkit.New("参数错误"))
 		return

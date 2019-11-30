@@ -5,16 +5,16 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/gin-gonic/gin"
 	"github.com/FWangZil/errkit"
+	"github.com/gin-gonic/gin"
 )
 
 const (
-	respOk      = "OK"
-	respNotUser = "NotUser"
-	respFail    = "FAIL"
-	respUnLogin = "UNLogin"
-	respNoAuth  = "NOAuth"
+	respOk      = 0 //"OK"
+	respNotUser = 1 //"NotUser"
+	respFail    = 2 //"FAIL"
+	respUnLogin = 3 //"UnLogin"
+	respNoAuth  = 4 //"NoAuth"
 )
 
 // resp Payload返回
@@ -24,13 +24,20 @@ func ok(c *gin.Context, resp resp) {
 	result := make(map[string]interface{})
 	if resp != nil {
 		for key, value := range resp {
-			if fmt.Sprint(value) != "<nil>" {
-				result[key] = value
+			if fmt.Sprint(value) != "<nil>" && fmt.Sprint(key) != "token" {
+				data := make(map[string]interface{})
+				data[key] = value
+				result["data"] = data
+			} else if fmt.Sprint(key) == "token" {
+				data := make(map[string]interface{})
+				data[key] = value
+				result["userToken"] = data
 			}
 		}
 	}
 	result["resultCode"] = respOk
-	result["resultMsg"] = ""
+	result["resultMsg"] = "成功"
+
 	c.JSON(http.StatusOK, result)
 }
 

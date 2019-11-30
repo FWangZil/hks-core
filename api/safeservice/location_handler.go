@@ -8,8 +8,8 @@ import (
 
 	"github.com/shopspring/decimal"
 
-	"github.com/gin-gonic/gin"
 	"github.com/FWangZil/errkit"
+	"github.com/gin-gonic/gin"
 )
 
 // getUserStatus 通过ID获取用户信息
@@ -76,7 +76,7 @@ func setUserLocation(c *gin.Context) {
 		Longitude decimal.Decimal `json:"longitude"` // 经度
 		Latitude  decimal.Decimal `json:"latitude"`  // 维度
 	}{}
-	if err := c.ShouldBind(&param); err != nil {
+	if err := c.ShouldBindQuery(&param); err != nil {
 		log.Println(fmt.Errorf("参数错误:%w", err))
 		fail(c, errkit.New("参数错误"))
 		return

@@ -23,28 +23,22 @@
         },
         "parameters": [
           {
-            "name": "body",
-            "in": "body",
-            "description": "请求参数",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "account": {
-                  "type": "string",
-                  "description": "登录账号"
-                },
-                "password": {
-                  "type": "string",
-                  "description": "密码"
-                }
-              }
-            }
+            "name": "account",
+            "in": "query",
+            "description": "用户手机号",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "description": "用户密码",
+            "type": "string"
           }
         ]
       }
     },
     "/api/logout": {
-      "post": {
+      "get": {
         "summary": "退出",
         "operationId": "logout",
         "produces": ["application/json"],

@@ -8,8 +8,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/gin-gonic/gin"
 	"github.com/FWangZil/errkit"
+	"github.com/gin-gonic/gin"
 )
 
 // getEventByID 通过ID获取事件信息
@@ -73,7 +73,7 @@ func listEvent(c *gin.Context) {
 // registerEvent 事件注册接口
 func registerEvent(c *gin.Context) {
 	param := pkg.Event{}
-	if err := c.ShouldBind(&param); err != nil {
+	if err := c.ShouldBindQuery(&param); err != nil {
 		log.Println(fmt.Errorf("参数错误:%w", err))
 		fail(c, errkit.New("参数错误"))
 		return
@@ -92,7 +92,7 @@ func registerEvent(c *gin.Context) {
 // updateEvent 事件更新接口
 func updateEvent(c *gin.Context) {
 	param := pkg.Event{}
-	if err := c.ShouldBind(&param); err != nil {
+	if err := c.ShouldBindQuery(&param); err != nil {
 		log.Println(fmt.Errorf("参数错误:%w", err))
 		fail(c, errkit.New("参数错误"))
 		return
