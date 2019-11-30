@@ -22,7 +22,7 @@ func initRouter(router *gin.Engine) {
 	router.POST("/api/logout", logoutUser)
 	router.POST("/api/user/register", registerUser)
 	// 身份拦截
-	//router.Use(auth)
+	router.Use(auth)
 
 	router.GET("/api/currentUser", currentUser) // 获取当前用户
 

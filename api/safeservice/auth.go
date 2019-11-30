@@ -29,8 +29,9 @@ func auth(c *gin.Context) {
 	userID := getUserIDFromSession(c)
 	userInfo, err := user.Repo.GetUserByQuery(user.Query{UserID: userID})
 	if err != nil {
-		unLogin(c)
-		c.Abort()
+		log.Println("err", err)
+		// unLogin(c)
+		// c.Abort()
 	}
 	ctx := shared.WithUser(c.Request.Context(), userInfo)
 	c.Request = c.Request.WithContext(ctx)
