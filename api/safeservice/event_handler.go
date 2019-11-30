@@ -65,7 +65,7 @@ func listEvent(c *gin.Context) {
 		return
 	}
 	pagination.Total = count
-	ok(c, resp{
+	okArr(c, resp{
 		"data": events,
 	})
 }
