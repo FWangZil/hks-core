@@ -6,6 +6,54 @@ schemes:
   - http
 basePath: /api
 paths:
+
+  /login:
+    post:
+      summary: 登录
+      operationId: login
+      produces:
+        - application/json
+      tags:
+        - login
+      responses:
+        200:
+          description: 成功
+          schema:
+            type: object
+      parameters:
+        - name: body
+          in: body
+          description: 请求参数
+          schema:
+            $ref: "#/definitions/login"
+  /logout:
+    post:
+      summary: 退出
+      operationId: logout
+      produces:
+        - application/json
+      tags:
+        - login
+      responses:
+        200:
+          description: 成功
+          schema:
+            type: object
+  /currentUser:
+    get:
+      summary: 获取当前用户
+      operationId: currentUser
+      produces:
+        - application/json
+      tags:
+        - enter
+      responses:
+        200:
+          description: 成功
+          schema:
+            type: object
+
+
   /user/get:
     get:
       summary: 获取单个用户信息

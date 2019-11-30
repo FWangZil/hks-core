@@ -8,13 +8,29 @@ import (
 func initRouter(router *gin.Engine) {
 	// 总的文档首页在docs
 	router.Static("/api/docs", "./docs")
+
+	// 运营平台以session作为登录凭证
+	//router.Use(sessions.Sessions("safe", conf.GetSessionStore()))
+
+	router.POST("/login", login)
+	router.POST("/logout", logoutUser)
+	router.GET("/currentUser", currentUser) // 获取当前用户
+
+	// 身份拦截
+	router.Use(auth)
+
 	// initNoAuthRouter 不需要登录的接口
 	initNoAuthRouter(router)
+
 }
 
 // 不需要登录的接口
 func initNoAuthRouter(r *gin.Engine) {
+	// 统一登录地址
+	// 统一注销地址
+
 	user := r.Group("/api/user")
+	//user.POST("/login")
 	userGroup := user.Group("/")
 	{
 		userGroup.GET("/get", getUserByQuery)

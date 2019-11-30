@@ -15,7 +15,7 @@ func (c query) where() func(db *gorm.DB) *gorm.DB {
 			db = db.Where("id = ?", c.ID)
 		}
 		if len(c.Account) > 0 {
-			db = db.Where("account = ?", c.Account)
+			db = db.Where("mobile = ?", c.Account)
 		}
 		return db
 	}
