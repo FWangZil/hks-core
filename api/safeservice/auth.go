@@ -51,7 +51,7 @@ func currentUser(c *gin.Context) {
 		log.Println(err)
 	}
 	ok(c, resp{
-		"user": userInfo,
+		"data": userInfo,
 	})
 }
 
@@ -61,7 +61,7 @@ func currentLoginUser(c *gin.Context) {
 	t := session.Get("userID")
 	if t == nil {
 		ok(c, resp{
-			"login": false,
+			"data": false,
 		})
 		return
 	}
@@ -77,7 +77,7 @@ func currentLoginUser(c *gin.Context) {
 		log.Println(err)
 	}
 	ok(c, resp{
-		"user":  userInfo,
+		"data":  userInfo,
 		"login": true,
 	})
 }
@@ -112,7 +112,7 @@ func login(c *gin.Context) {
 		log.Println(err)
 	}
 	ok(c, resp{
-		"user":  userInfo,
+		"data":  userInfo,
 		"token": token,
 	})
 }

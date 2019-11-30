@@ -8,7 +8,7 @@ showMsg 'cd ssh'
 
 sshpass -p "password" ssh root@"ip" "cd /home/hks;docker pull "docker address" ;docker-compose up -d ;exit"
 # docker logs --tail 100 -f dmsj_apigatecard_1
-
+sshpass -p Copell123 ssh root@47.92.39.81
 
 showMsg 'cd clean docker build'
 docker image rm "docker address"

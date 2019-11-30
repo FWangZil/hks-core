@@ -24,14 +24,8 @@ func ok(c *gin.Context, resp resp) {
 	result := make(map[string]interface{})
 	if resp != nil {
 		for key, value := range resp {
-			if fmt.Sprint(value) != "<nil>" && fmt.Sprint(key) != "token" {
-				data := make(map[string]interface{})
-				data[key] = value
-				result["data"] = data
-			} else if fmt.Sprint(key) == "token" {
-				data := make(map[string]interface{})
-				data[key] = value
-				result["userToken"] = data
+			if fmt.Sprint(value) != "<nil>" {
+				result[key] = value
 			}
 		}
 	}

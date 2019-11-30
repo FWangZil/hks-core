@@ -25,7 +25,7 @@ func getEventByID(c *gin.Context) {
 		return
 	}
 	ok(c, resp{
-		"event": eventInfo,
+		"data": eventInfo,
 	})
 }
 
@@ -66,7 +66,7 @@ func listEvent(c *gin.Context) {
 	}
 	pagination.Total = count
 	ok(c, resp{
-		"events": events,
+		"data": events,
 	})
 }
 
@@ -85,7 +85,7 @@ func registerEvent(c *gin.Context) {
 		return
 	}
 	ok(c, resp{
-		"event": eventInfo,
+		"data": eventInfo,
 	})
 }
 
@@ -104,6 +104,6 @@ func updateEvent(c *gin.Context) {
 		return
 	}
 	ok(c, resp{
-		"event": eventInfo,
+		"data": eventInfo,
 	})
 }

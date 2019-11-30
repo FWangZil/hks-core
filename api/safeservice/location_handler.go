@@ -31,7 +31,7 @@ func getUserStatus(c *gin.Context) {
 		return
 	}
 	ok(c, resp{
-		"user": userInfo,
+		"data": userInfo,
 	})
 }
 
@@ -48,7 +48,7 @@ func getLocation(c *gin.Context) {
 		return
 	}
 	ok(c, resp{
-		"userLocation": ul,
+		"data": ul,
 	})
 }
 
@@ -65,7 +65,7 @@ func listUserLocations(c *gin.Context) {
 		return
 	}
 	ok(c, resp{
-		"userLocations": uls,
+		"data": uls,
 	})
 }
 
@@ -87,6 +87,6 @@ func setUserLocation(c *gin.Context) {
 		return
 	}
 	ok(c, resp{
-		"userLocation": ul,
+		"data": ul,
 	})
 }

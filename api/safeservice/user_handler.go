@@ -29,7 +29,7 @@ func getUserByQuery(c *gin.Context) {
 		return
 	}
 	ok(c, resp{
-		"user": userInfo,
+		"data": userInfo,
 	})
 }
 
@@ -60,7 +60,7 @@ func listUser(c *gin.Context) {
 	}
 	pagination.Total = count
 	ok(c, resp{
-		"users": users,
+		"data": users,
 	})
 }
 
@@ -94,7 +94,7 @@ func registerUser(c *gin.Context) {
 		return
 	}
 	ok(c, resp{
-		"user": userInfo,
+		"data": userInfo,
 	})
 }
 
@@ -118,7 +118,7 @@ func addRelationship(c *gin.Context) {
 		return
 	}
 	ok(c, resp{
-		"user": userInfo,
+		"data": userInfo,
 	})
 }
 
@@ -135,6 +135,6 @@ func getRelationship(c *gin.Context) {
 		return
 	}
 	ok(c, resp{
-		"relations": relations,
+		"data": relations,
 	})
 }
