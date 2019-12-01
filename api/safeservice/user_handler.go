@@ -88,6 +88,9 @@ func registerUser(c *gin.Context) {
 			return
 		}
 	}
+	if param.Type == 0 {
+		param.Type = pkg.TypeUser
+	}
 	userInfo, err := user.Repo.UserRegister(&param)
 	if err != nil {
 		fail(c, err)
