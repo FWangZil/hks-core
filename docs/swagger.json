@@ -651,6 +651,22 @@
           }
         ]
       }
+    },
+    "/api/event/delete": {
+      "delete": {
+        "summary": "报警事件清空接口",
+        "operationId": "deleteAllEvents",
+        "produces": ["application/json"],
+        "tags": ["event"],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "object"
+            }
+          }
+        }
+      }
     }
   },
   "definitions": {

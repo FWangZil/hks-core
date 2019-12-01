@@ -55,5 +55,6 @@ func initNeedAuthRouter(r *gin.Engine) {
 		eventGroup.GET("/list", listEvent)
 		eventGroup.POST("/register", registerEvent)
 		eventGroup.POST("/update", updateEvent)
+		eventGroup.DELETE("/delete", deleteAllEvents)
 	}
 }

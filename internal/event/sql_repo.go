@@ -62,3 +62,10 @@ func (repo sqlRepo) count(query Query) (uint, error) {
 	}
 	return count, nil
 }
+
+func (repo sqlRepo) DeleteAllEvents() error {
+	if err := repo.db.Model(&pkg.Event{}).Delete(&pkg.Event{}).Error; err != nil {
+		return err
+	}
+	return nil
+}

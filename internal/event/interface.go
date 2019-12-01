@@ -12,4 +12,6 @@ type repoI interface {
 
 	// UpdateEvent 更新事件状态
 	UpdateEvent(event *pkg.Event) (*pkg.Event, error)
+
+	DeleteAllEvents() error
 }

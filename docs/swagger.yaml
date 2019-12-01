@@ -490,6 +490,20 @@ paths:
           description: 热心群众/保安ID
           type: integer
 
+  /api/event/delete:
+    delete:
+      summary: 报警事件清空接口
+      operationId: deleteAllEvents
+      produces:
+        - application/json
+      tags:
+        - event
+      responses:
+        200:
+          description: 成功
+          schema:
+            type: object
+
 # 引用参数
 definitions:
   # 用户注册参数

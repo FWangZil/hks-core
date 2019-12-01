@@ -107,3 +107,12 @@ func updateEvent(c *gin.Context) {
 		"data": eventInfo,
 	})
 }
+
+func deleteAllEvents(c *gin.Context) {
+	err := event.Repo.DeleteAllEvents()
+	if err != nil {
+		fail(c, err)
+		return
+	}
+	ok(c, resp{})
+}
