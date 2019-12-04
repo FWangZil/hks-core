@@ -35,6 +35,15 @@
 
 version: '3.1'
 services:
+
+  hks-core:
+    image: registry.cn-chengdu.aliyuncs.com/wmicroservice/hks-core:b0.1
+    volumes:
+      - ./config.yaml:/var/config/config.yaml
+      - /etc/localtime:/etc/localtime
+    ports:
+      - "80:8080"
+
   redis:
     image: redis:latest
     ports:
@@ -49,7 +58,7 @@ services:
     volumes:
       - /etc/timezone:/etc/timezone
       - /etc/localtime:/etc/localtime
-      - ~/tools/dockerTools/mysqlData
+      - ./mysqlData
     ports:
       - "3306:3306"
     command: [mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci]
