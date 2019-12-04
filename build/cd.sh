@@ -7,7 +7,9 @@ function showMsg() {
 showMsg 'cd ssh'
 
 # sshpass -p Copell123 ssh root@47.92.39.81 "cd /home/hks;docker pull registry.cn-chengdu.aliyuncs.com/wmicroservice/hks-core:b0.1 ;docker-compose up -d ;exit"
-sshpass -p 19951129wzl ssh root@119.3.6.213 "cd /home/hks;docker pull registry.cn-chengdu.aliyuncs.com/wmicroservice/hks-core:b0.1 ;docker-compose up -d ;exit"
+# sshpass -p 19951129wzl ssh root@119.3.6.213 "cd /home/hks;docker pull registry.cn-chengdu.aliyuncs.com/wmicroservice/hks-core:b0.1 ;docker-compose up -d ;exit"
+plink -C -ssh -pw 19951129Wzl root@119.3.6.213 "cd /home/hks;docker pull registry.cn-chengdu.aliyuncs.com/wmicroservice/hks-core:b0.1 ;docker-compose up -d ;exit"
+
 
 showMsg 'cd clean docker build'
 docker image rm registry.cn-chengdu.aliyuncs.com/wmicroservice/hks-core:b0.1
