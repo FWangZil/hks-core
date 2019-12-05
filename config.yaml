@@ -1,6 +1,6 @@
 database:
   dialect: mysql
-  dsn: root:123456@tcp(172.18.0.4:3306)/hks?charset=utf8mb4&parseTime=true
+  dsn: root:123456@tcp(119.3.6.213:3306)/hks?charset=utf8mb4&parseTime=true
   debug: true
 
 gin:
@@ -9,6 +9,6 @@ gin:
 session:
   size: 10
   network: tcp
-  address: 172.18.0.3:6379
+  address: 119.3.6.213:6379
   password:
-  keyPairs: 2015f854-9845-41b0-b583-bcc6e51fdbfb
+  keyPairs: 2019f854-9845-41b0-b583-bcc6e51fdbfb

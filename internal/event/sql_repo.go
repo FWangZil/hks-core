@@ -23,6 +23,15 @@ func (repo sqlRepo) GetEventByID(eventID uint) (*pkg.Event, error) {
 	return event, nil
 }
 
+// GetNewestEventByUserID 获取事件详情
+func (repo sqlRepo) GetNewestEventByUserID(userID uint) (*pkg.Event, error) {
+	event := &pkg.Event{}
+	if err := repo.db.Model(event).Where("user_id = ?", userID).First(event).Error; err != nil {
+		return nil, fmt.Errorf("获取事件信息发生错误：%w", err)
+	}
+	return event, nil
+}
+
 // ListEvent 获取事件详情
 func (repo sqlRepo) ListEvent(query Query) ([]pkg.Event, uint, error) {
 	count, err := repo.count(query)

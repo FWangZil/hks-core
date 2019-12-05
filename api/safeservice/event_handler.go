@@ -29,6 +29,23 @@ func getEventByID(c *gin.Context) {
 	})
 }
 
+// getNewestEventByUserID 获取某用户最新的报警事件
+func getNewestEventByUserID(c *gin.Context) {
+	userID, err := util.ParseUint(c.Query("userID"))
+	if err != nil {
+		fail(c, err)
+		return
+	}
+	eventInfo, err := event.Repo.GetNewestEventByUserID(userID)
+	if err != nil {
+		fail(c, err)
+		return
+	}
+	ok(c, resp{
+		"data": eventInfo,
+	})
+}
+
 // listEvent 通过ID获取事件信息
 func listEvent(c *gin.Context) {
 	param := struct {
@@ -66,7 +83,8 @@ func listEvent(c *gin.Context) {
 	}
 	pagination.Total = count
 	okArr(c, resp{
-		"data": events,
+		"data":       events,
+		"pagination": pagination,
 	})
 }
 

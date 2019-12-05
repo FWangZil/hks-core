@@ -465,6 +465,37 @@
         ]
       }
     },
+    "/api/event/get/newest": {
+      "get": {
+        "summary": "获取用户最新单个事件信息",
+        "operationId": "getNewestEventByUserID",
+        "produces": ["application/json"],
+        "tags": ["event"],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "schema": {
+              "type": "object"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "token",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "userID",
+            "in": "query",
+            "description": "用户ID",
+            "type": "integer"
+          }
+        ]
+      }
+    },
     "/api/event/list": {
       "get": {
         "summary": "获取事件列表信息",
