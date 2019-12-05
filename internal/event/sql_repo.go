@@ -40,6 +40,14 @@ func (repo sqlRepo) ListEvent(query Query) ([]pkg.Event, uint, error) {
 func (repo sqlRepo) EventRegister(event *pkg.Event) (*pkg.Event, error) {
 	event.Status = pkg.StatusWaiting
 	event.Time = time.Now()
+	user := &pkg.User{}
+	if err := repo.db.Model(user).Where("id = ?", event.UserID).First(user).Error; err != nil {
+		return nil, fmt.Errorf("获取用户信息发生错误%w", err)
+	}
+	event.UserName = user.Name
+	event.UserMobile = user.Mobile
+	event.UserGender = user.Gender
+	event.UserAge = user.Age
 	if err := repo.db.Model(&pkg.Event{}).Create(&event).Error; err != nil {
 		return nil, fmt.Errorf("注册事件信息发生错误：%w", err)
 	}
