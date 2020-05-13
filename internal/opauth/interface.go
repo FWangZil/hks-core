@@ -1,6 +1,6 @@
 package opauth
 
-import "hks/hks-core/pkg"
+import "github.com/FWangZil/hks-core/pkg"
 
 type acl interface {
 	// 登录

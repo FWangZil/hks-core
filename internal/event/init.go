@@ -1,7 +1,7 @@
 package event
 
 import (
-	"hks/hks-core/internal/sql"
+	"github.com/FWangZil/hks-core/internal/sql"
 )
 
 var (

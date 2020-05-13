@@ -2,7 +2,7 @@ package user
 
 import (
 	"fmt"
-	"hks/hks-core/pkg"
+	"github.com/FWangZil/hks-core/pkg"
 
 	"github.com/FWangZil/errkit"
 

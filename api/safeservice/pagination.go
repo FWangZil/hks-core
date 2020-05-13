@@ -1,8 +1,8 @@
 package safeservice
 
 import (
-	"hks/hks-core/pkg"
-	"hks/hks-core/util"
+	"github.com/FWangZil/hks-core/pkg"
+	"github.com/FWangZil/hks-core/util"
 
 	"github.com/gin-gonic/gin"
 )

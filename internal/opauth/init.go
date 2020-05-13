@@ -1,6 +1,6 @@
 package opauth
 
-import "hks/hks-core/internal/sql"
+import "github.com/FWangZil/hks-core/internal/sql"
 
 // ACL 权限控制器
 var ACL acl

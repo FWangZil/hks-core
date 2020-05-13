@@ -2,8 +2,8 @@ package safeservice
 
 import (
 	"fmt"
-	"hks/hks-core/internal/user"
-	"hks/hks-core/util"
+	"github.com/FWangZil/hks-core/internal/user"
+	"github.com/FWangZil/hks-core/util"
 	"log"
 
 	"github.com/shopspring/decimal"

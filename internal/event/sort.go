@@ -1,6 +1,6 @@
 package event
 
-import "hks/hks-core/pkg"
+import "github.com/FWangZil/hks-core/pkg"
 
 // byDate implements sort.Interface.
 type byDate []pkg.User

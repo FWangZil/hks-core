@@ -1,6 +1,6 @@
 package main
 
-import "hks/hks-core/api/safeservice"
+import "github.com/FWangZil/hks-core/api/safeservice"
 
 func main() {
 	safeservice.Init()

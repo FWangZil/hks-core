@@ -1,6 +1,6 @@
 package event
 
-import "hks/hks-core/pkg"
+import "github.com/FWangZil/hks-core/pkg"
 
 type repoI interface {
 	// GetEventByID 获取事件详情

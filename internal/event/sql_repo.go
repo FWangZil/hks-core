@@ -2,7 +2,7 @@ package event
 
 import (
 	"fmt"
-	"hks/hks-core/pkg"
+	"github.com/FWangZil/hks-core/pkg"
 	"time"
 
 	"github.com/FWangZil/errkit"

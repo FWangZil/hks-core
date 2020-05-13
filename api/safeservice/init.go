@@ -1,11 +1,11 @@
 package safeservice
 
 import (
-	"hks/hks-core/internal/conf"
-	"hks/hks-core/internal/event"
-	"hks/hks-core/internal/opauth"
-	"hks/hks-core/internal/sql"
-	"hks/hks-core/internal/user"
+	"github.com/FWangZil/hks-core/internal/conf"
+	"github.com/FWangZil/hks-core/internal/event"
+	"github.com/FWangZil/hks-core/internal/opauth"
+	"github.com/FWangZil/hks-core/internal/sql"
+	"github.com/FWangZil/hks-core/internal/user"
 	"log"
 
 	"github.com/gin-gonic/gin"

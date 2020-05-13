@@ -1,7 +1,7 @@
 package opauth
 
 import (
-	"hks/hks-core/pkg"
+	"github.com/FWangZil/hks-core/pkg"
 
 	"github.com/FWangZil/errkit"
 	"github.com/jinzhu/gorm"

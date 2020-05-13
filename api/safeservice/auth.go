@@ -2,10 +2,10 @@ package safeservice
 
 import (
 	"fmt"
-	"hks/hks-core/internal/opauth"
-	"hks/hks-core/internal/shared"
-	"hks/hks-core/internal/user"
-	"hks/hks-core/util"
+	"github.com/FWangZil/hks-core/internal/opauth"
+	"github.com/FWangZil/hks-core/internal/shared"
+	"github.com/FWangZil/hks-core/internal/user"
+	"github.com/FWangZil/hks-core/util"
 	"log"
 
 	"github.com/FWangZil/errkit"

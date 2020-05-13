@@ -1,8 +1,8 @@
 package sql
 
 import (
-	"hks/hks-core/internal/conf"
-	"hks/hks-core/pkg"
+	"github.com/FWangZil/hks-core/internal/conf"
+	"github.com/FWangZil/hks-core/pkg"
 	"log"
 
 	"github.com/jinzhu/gorm"

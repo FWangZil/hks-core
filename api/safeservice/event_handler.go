@@ -2,9 +2,9 @@ package safeservice
 
 import (
 	"fmt"
-	"hks/hks-core/internal/event"
-	"hks/hks-core/pkg"
-	"hks/hks-core/util"
+	"github.com/FWangZil/hks-core/internal/event"
+	"github.com/FWangZil/hks-core/pkg"
+	"github.com/FWangZil/hks-core/util"
 	"log"
 	"time"
 

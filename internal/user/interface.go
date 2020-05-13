@@ -1,7 +1,7 @@
 package user
 
 import (
-	"hks/hks-core/pkg"
+	"github.com/FWangZil/hks-core/pkg"
 
 	"github.com/shopspring/decimal"
 )

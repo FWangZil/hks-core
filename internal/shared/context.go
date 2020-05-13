@@ -2,7 +2,7 @@ package shared
 
 import (
 	"context"
-	"hks/hks-core/pkg"
+	"github.com/FWangZil/hks-core/pkg"
 )
 
 type key string

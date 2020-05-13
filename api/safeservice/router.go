@@ -1,7 +1,7 @@
 package safeservice
 
 import (
-	"hks/hks-core/internal/conf"
+	"github.com/FWangZil/hks-core/internal/conf"
 
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"

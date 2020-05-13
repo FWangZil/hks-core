@@ -11,7 +11,7 @@ import (
 const (
 	linuxCfg   = "/var/config/config.yaml"
 	devCfg     = "./config.yaml"
-	projectCfg = "hks/hks-core/config.yaml"
+	projectCfg = "github.com/FWangZil/hks-core/config.yaml"
 )
 
 // Init 读取配置文件
