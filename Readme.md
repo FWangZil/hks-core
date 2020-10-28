@@ -1,3 +1,5 @@
+![avatar](https://socialify.git.ci/FWangZil/hks-core/image?description=1&font=KoHo&language=1&owner=1&pattern=Plus&stargazers=1&theme=Dark)
+
 # 守护精灵
 
 ## 已完成功能
